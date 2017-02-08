@@ -21,7 +21,6 @@ export class PublishPage {
   ionViewWillEnter(){
   	
   	console.log('ionViewWillEnter')
-  	let that = this;
   	if(true){
   		this.show();
   	}

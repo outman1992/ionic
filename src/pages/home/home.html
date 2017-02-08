@@ -1,27 +1,78 @@
 <ion-header>
-  <ion-toolbar color="tgreen">
-    <ion-buttons left>
-      <button ion-button>
-        <ion-icon name="pin"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-title>淘二淘-大学生二手网</ion-title>
-    <ion-buttons right>
-      <button ion-button>
-        <ion-icon name="search"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar color="tgreen">
+        <ion-buttons left>
+            <button ion-button>
+                <ion-icon name="pin"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>淘二淘-大学生二手网</ion-title>
+        <ion-buttons right>
+            <button ion-button>
+                <ion-icon name="search"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
-
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content>
+    <ion-slides autoplay="2000" pager="true" loop="true">
+        <ion-slide *ngFor="let item of focus">
+            <img src="{{item.img}}">
+        </ion-slide>
+    </ion-slides>
+    <div class="category">
+        <ion-grid>
+            <ion-row>
+                <ion-col class="cate-item" width-25 *ngFor="let cate of category.cateLineOne" (click)="pushCateList(cate.cateName)">
+                    <ion-icon name="{{cate.icon}}"></ion-icon>
+                    <p class="cate-name">{{cate.cateName}}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="cate-item" width-25 *ngFor="let cate of category.cateLineTwo" (click)="pushCateList(cate.cateName)">
+                    <ion-icon name="{{cate.icon}}"></ion-icon>
+                    <p class="cate-name">{{cate.cateName}}</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div class="load-by">
+        <ion-grid>
+            <ion-row>
+                <ion-col class="{{current == 'new' ? 'current' : ''}}" width-50 [ngStyle]="{'border-right': '#ddd solid 1px'}">最新</ion-col>
+                <ion-col class="{{current == 'recommend' ? 'current' : ''}}" width-50>推荐</ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div class="goods-list">
+        <ion-card *ngFor="let item of goods">
+            <ion-item>
+                <ion-avatar item-left><img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png"></ion-avatar>
+                <h2>{{item.sellerName}}</h2>
+                <ion-note item-right>发布于 16分钟前</ion-note>
+            </ion-item>
+            <ion-scroll scrollX="true" class="good-images">
+                <div class="good-images-scroll" [ngStyle]="{'width': + (item.goodImages.length * 125) + 'px'}">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col *ngFor="let image of item.goodImages"><img src="{{image}}"></ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </ion-scroll>
+            <ion-item>
+                <div class="price" item-left>￥100</div>
+                <div class="views" item-right class="good-info">
+                    <ion-icon name="eye" item-left></ion-icon>
+                    <span>150次浏览</span>
+                </div>
+                <div class="want" item-right class="good-info">
+                    <ion-icon name="heart" item-left></ion-icon>
+                    <span>150人想要</span>
+                </div>
+            </ion-item>
+            <ion-card-content>
+                <p>{{item.goodDes}}</p>
+            </ion-card-content>
+        </ion-card>
+    </div>
 </ion-content>
