@@ -1,14 +1,14 @@
 <ion-header>
     <ion-toolbar color="tgreen">
-        <ion-buttons left>
+        <!-- <ion-buttons left>
             <button ion-button>
                 <ion-icon name="pin"></ion-icon>
             </button>
-        </ion-buttons>
+        </ion-buttons> -->
         <ion-title>淘二淘-大学生二手网</ion-title>
         <ion-buttons right>
-            <button ion-button>
-                <ion-icon name="search"></ion-icon>
+            <button ion-button (click)="openSearchModal()">
+                <ion-icon name="search" class="search-btn"></ion-icon>
             </button>
         </ion-buttons>
     </ion-toolbar>
@@ -38,29 +38,29 @@
     <div class="load-by">
         <ion-grid>
             <ion-row>
-                <ion-col class="{{current == 'new' ? 'current' : ''}}" width-50 [ngStyle]="{'border-right': '#ddd solid 1px'}">最新</ion-col>
-                <ion-col class="{{current == 'recommend' ? 'current' : ''}}" width-50>推荐</ion-col>
+                <ion-col (click)="loadList(1)" class="list-type {{current == 'new' ? 'current' : ''}}" width-50 [ngStyle]="{'border-right': '#ddd solid 1px'}">最新</ion-col>
+                <ion-col (click)="loadList(2)" class="list-type {{current == 'recommend' ? 'current' : ''}}" width-50>推荐</ion-col>
             </ion-row>
         </ion-grid>
     </div>
     <div class="goods-list">
-        <ion-card *ngFor="let item of goods">
+        <ion-card *ngFor="let item of goods" (click)="pushDetail(item.id)">
             <ion-item>
-                <ion-avatar item-left><img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png"></ion-avatar>
+                <ion-avatar item-left><img src="{{item.sellerHeader}}"></ion-avatar>
                 <h2>{{item.sellerName}}</h2>
                 <ion-note item-right>发布于 16分钟前</ion-note>
             </ion-item>
             <ion-scroll scrollX="true" class="good-images">
-                <div class="good-images-scroll" [ngStyle]="{'width': + (item.goodImages.length * 125) + 'px'}">
+                <div class="good-images-scroll" [ngStyle]="{'width': + (item.image.length * 125) + 'px'}">
                     <ion-grid>
                         <ion-row>
-                            <ion-col *ngFor="let image of item.goodImages"><img src="{{image}}"></ion-col>
+                            <ion-col *ngFor="let image of item.image"><img src="{{image}}"></ion-col>
                         </ion-row>
                     </ion-grid>
                 </div>
             </ion-scroll>
-            <ion-item>
-                <div class="price" item-left>￥100</div>
+            <ion-item class="good-info-bar">
+                <div class="price" item-left>￥{{item.price}}</div>
                 <div class="views" item-right class="good-info">
                     <ion-icon name="eye" item-left></ion-icon>
                     <span>150次浏览</span>
@@ -71,8 +71,12 @@
                 </div>
             </ion-item>
             <ion-card-content>
-                <p>{{item.goodDes}}</p>
+                <p>{{item.description}}</p>
             </ion-card-content>
         </ion-card>
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)" enabled="{{!dataOver}}">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="拼命加载中..."></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+        <div *ngIf="dataOver" class="bottom-line">~ 我是有底线的 ~</div>
     </div>
 </ion-content>

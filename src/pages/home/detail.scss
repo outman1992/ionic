@@ -1,0 +1,25 @@
+.ios,
+.md {
+    .item-block .item-inner {
+        border: none;
+    }
+    .detail-header {
+        border-bottom: 1px solid #dedede;
+    }
+    .detail-des {
+        background: #fff;
+    }
+    .detail-des p {
+        margin: 0;
+    }
+    .detail-images[padding] {
+        background: #fff;
+        padding-top: 0;
+    }
+    .detail-images img {
+        width: 100%;
+    }
+    .goods-title {
+        font-size: 2.4rem;
+    }
+}

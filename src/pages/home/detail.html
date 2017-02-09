@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar color="tgreen">
+        <ion-buttons left>
+            <button ion-button (click)="goback()">
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>二货详情</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div *ngIf="detail">
+        <ion-item class="detail-header">
+            <ion-avatar item-left>
+                <img src="{{detail.sellerHeader}}">
+            </ion-avatar>
+            <h2>{{detail.sellerName}}</h2>
+            <h3 class="goods-title" item-right color="danger">￥{{detail.price}}</h3>
+        </ion-item>
+        <div class="detail-des" padding>
+            <p>{{detail.description}}</p>
+        </div>
+        <div class="detail-images" padding>
+            <div class="image-item" *ngFor="let item of detail.image">
+                <img src="{{item}}">
+            </div>
+        </div>
+    </div>
+</ion-content>
