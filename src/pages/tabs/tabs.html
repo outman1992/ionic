@@ -1,7 +1,8 @@
 <ion-tabs color="tgreen">
-  <ion-tab [root]="tab1Root" tabTitle="首页" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="分类" tabIcon="menu"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="发布" tabIcon="add-circle"></ion-tab>
-  <ion-tab [root]="tab4Root" tabTitle="消息" tabIcon="chatbubbles"></ion-tab>
-  <ion-tab [root]="tab5Root" tabTitle="我的" tabIcon="person"></ion-tab>
+    <ion-tab [root]="tab1Root" tabTitle="首页" tabIcon="home"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="分类" tabIcon="menu"></ion-tab>
+    <ion-tab (ionSelect)="goPublish()" tabTitle="发布" tabIcon="add-circle"></ion-tab>
+    <!--  [root]="tab3Root" -->
+    <ion-tab [root]="tab4Root" tabTitle="消息" tabIcon="chatbubbles"></ion-tab>
+    <ion-tab [root]="tab5Root" tabTitle="我的" tabIcon="person"></ion-tab>
 </ion-tabs>

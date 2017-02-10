@@ -1,11 +1,11 @@
 <ion-header>
     <ion-toolbar color="tgreen">
-        <ion-searchbar></ion-searchbar>
-        <ion-buttons right>
+        <ion-searchbar type="text" #searchbar showCancelButton="true" cancelButtonText="取消" (ionCancel)="goback()"></ion-searchbar>
+        <!-- <ion-buttons right>
             <button ion-button (click)="goback()">
                 取消
             </button>
-        </ion-buttons>
+        </ion-buttons> -->
     </ion-toolbar>
 </ion-header>
 <ion-content>

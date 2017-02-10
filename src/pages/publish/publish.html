@@ -1,11 +1,67 @@
 <ion-header>
-  <ion-navbar color="tgreen">
-    <ion-title>
-      发布
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar color="tgreen">
+        <ion-title>
+            发布
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="goback()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
-
 <ion-content>
-  <button ion-button (click)="show()">登录</button>
+    <ion-list class="publish-item">
+        <ion-item>
+            <ion-label>标题</ion-label>
+            <ion-input placeholder="" clearInput></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>描述</ion-label>
+            <ion-textarea>
+                <textarea class="goods-des"></textarea>
+            </ion-textarea>
+        </ion-item>
+        <ion-item class="add-botton">
+            <ion-buttons (click)="getImages()">
+                <div>
+                    <ion-icon name="add"></ion-icon>
+                </div>
+                <div><span>添加照片</span></div>
+            </ion-buttons>
+            <ion-buttons (click)="getPhotos()">
+                <div>
+                    <ion-icon name="add"></ion-icon>
+                </div>
+                <div><span>添加照片</span></div>
+            </ion-buttons>
+        </ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col width-50>
+                    <ion-item>
+                        <ion-label>现价</ion-label>
+                        <ion-input placeholder="￥0.0" clearInput></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col width-50>
+                    <ion-item>
+                        <ion-label>原价</ion-label>
+                        <ion-input placeholder="￥0.0" clearInput></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-item>
+            <ion-label>运费</ion-label>
+            <ion-input placeholder="￥0.0" clearInput></ion-input>
+        </ion-item>
+        <button ion-item>
+            <span class="label-name">分类</span>
+            <span>请选择分类</span>
+        </button>
+    </ion-list>
 </ion-content>
+<ion-footer>
+    <button class="publish-btn" ion-button full color="danger">发布</button>
+</ion-footer>

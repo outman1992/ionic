@@ -40,10 +40,12 @@ export class LoginPage {
 			});
 
 			loading.present();
+			localStorage.setItem('token', '123456789789456123');
 
 			setTimeout(() => {
 				loading.dismiss();
-			}, 5000);
+				this.viewCtrl.dismiss();
+			}, 1000);
 		}
 	}
 

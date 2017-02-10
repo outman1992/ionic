@@ -75,7 +75,7 @@
             </ion-card-content>
         </ion-card>
         <ion-infinite-scroll (ionInfinite)="doInfinite($event)" enabled="{{!dataOver}}">
-            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="拼命加载中..."></ion-infinite-scroll-content>
+            <ion-infinite-scroll-content loadingText="拼命加载中..."></ion-infinite-scroll-content>
         </ion-infinite-scroll>
         <div *ngIf="dataOver" class="bottom-line">~ 我是有底线的 ~</div>
     </div>

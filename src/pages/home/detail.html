@@ -27,3 +27,22 @@
         </div>
     </div>
 </ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-buttons (click)="goback()" left>
+            <div>
+                <ion-icon name="chatboxes"></ion-icon>
+            </div>
+            <div>留言</div>
+        </ion-buttons>
+        <ion-buttons (click)="goback()" left>
+            <div>
+                <ion-icon name="heart"></ion-icon>
+            </div>
+            <div>想要</div>
+        </ion-buttons>
+        <ion-buttons class="buy-btn" (click)="goback()" right>
+            <div>买买买</div>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

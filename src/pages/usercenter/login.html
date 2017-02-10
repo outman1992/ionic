@@ -1,27 +1,23 @@
 <ion-header>
-  <ion-toolbar color="tgreen">
-    <ion-buttons end>
-      <button ion-button (click)="goback()">
-        <ion-icon name="close"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-title>登录</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="tgreen">
+        <ion-buttons end>
+            <button ion-button (click)="goback()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>登录</ion-title>
+    </ion-toolbar>
 </ion-header>
-
 <ion-content padding>
-  	<ion-list>
-
-	  <ion-item>
-	    <ion-label floating>用户名</ion-label>
-	    <ion-input type="text" [(ngModel)]="user.username" class="form-control"></ion-input>
-	  </ion-item>
-
-	  <ion-item>
-	    <ion-label floating>密码</ion-label>
-	    <ion-input type="password" [(ngModel)]="user.password" class="form-control"></ion-input>
-	  </ion-item>
-
-	</ion-list>
-	<button ion-button block (click)="login()" color="tgreen">登录</button>
+    <ion-list>
+        <ion-item>
+            <ion-label floating>用户名</ion-label>
+            <ion-input type="text" [(ngModel)]="user.username" class="form-control"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>密码</ion-label>
+            <ion-input type="password" [(ngModel)]="user.password" class="form-control"></ion-input>
+        </ion-item>
+    </ion-list>
+    <button ion-button block (click)="login()" color="tgreen">登录</button>
 </ion-content>
