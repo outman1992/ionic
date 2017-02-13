@@ -1,6 +1,25 @@
 // ion-app.ios [padding], ion-app.ios [padding] .scroll-content{
-// 	padding: 0;
+//  padding: 0;
 // }
-ion-icon{
-	font-size: 2em;
+ion-icon {
+    font-size: 2em;
+}
+
+.item-md.item-input.input-has-focus .item-inner {
+    border: none;
+    box-shadow: none;
+}
+
+.list-md .item-input.input-has-focus:last-child {
+    border: none;
+    box-shadow: none;
+}
+
+.list-md .item-input:last-child {
+    border: none;
+}
+
+.login-form {
+    border-radius: 5px;
+    overflow: hidden;
 }

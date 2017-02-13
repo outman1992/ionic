@@ -1,5 +1,7 @@
 .publish-btn {
     margin: 0;
+    font-size: 1.2em;
+    height: 2.8em;
 }
 
 .platform-mobile textarea.text-input {
@@ -24,6 +26,20 @@
 
 .add-botton ion-buttons span {
     font-size: .8em;
+}
+
+.add-botton img {
+    width: 5em;
+    height: 5em;
+    float: left;
+}
+
+.images-list {
+    width: 5em;
+    height: 5em;
+    float: left;
+    margin-right: .5em;
+    margin-bottom: .5em;
 }
 
 ion-grid {

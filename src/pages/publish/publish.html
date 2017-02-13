@@ -23,13 +23,10 @@
             </ion-textarea>
         </ion-item>
         <ion-item class="add-botton">
-            <ion-buttons (click)="getImages()">
-                <div>
-                    <ion-icon name="add"></ion-icon>
-                </div>
-                <div><span>添加照片</span></div>
-            </ion-buttons>
-            <ion-buttons (click)="getPhotos()">
+            <div class="images-list" *ngFor="let item of imageArray">
+                <img src="{{item}}">
+            </div>
+            <ion-buttons (click)="getImages()" *ngIf="imageArray.length < 5">
                 <div>
                     <ion-icon name="add"></ion-icon>
                 </div>
