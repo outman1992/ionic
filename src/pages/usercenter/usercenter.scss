@@ -1,0 +1,56 @@
+.user-header {
+    padding: 20px 0;
+    background-color: #fff;
+    border-bottom: #e5e5e5 solid 1px;
+}
+
+.content-md .user-header {
+    border-bottom: #e5e5e5 solid 2px;
+}
+
+.header-image {
+    width: 5em;
+    height: 5em;
+    border-radius: 2.5em;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.header-image img {
+    width: 5em;
+    height: 5em;
+}
+
+.header-btns {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.header-btns button {
+    height: 3rem;
+    border-color: #11cd6e;
+    color: #11cd6e;
+}
+
+.label {
+    margin: 0;
+}
+
+.item-inner {
+    padding: 0;
+}
+
+.user button {
+    color: #11cd6e;
+    border-bottom: #e5e5e5 solid 1px;
+}
+
+.list-ios>.item-block:first-child,
+.list-ios>.item-block:last-child,
+.list-ios>.item-wrapper:last-child .item-block {
+    border-color: #e5e5e5;
+}
+
+.user button.item-md .item-inner {
+    margin-left: 10px;
+}

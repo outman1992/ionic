@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar color="tgreen">
+        <ion-buttons end>
+            <button ion-button (click)="goback()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>选择交易方式</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-list radio-group [(ngModel)]="sellmethod">
+
+        <ion-item>
+            <ion-label>在线交易</ion-label>
+            <ion-radio (click)="goback()" checked="{{sellmethod == 1}}" value="1"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>线下交易</ion-label>
+            <ion-radio (click)="goback()" checked="{{sellmethod == 2}}" value="2"></ion-radio>
+        </ion-item>
+
+    </ion-list>
+</ion-content>

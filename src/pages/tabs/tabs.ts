@@ -7,7 +7,7 @@ import { UsercenterPage } from '../usercenter/usercenter';
 import { LoginPage } from '../usercenter/login';
 import { PublishPage } from '../publish/publish';
 
-import { NavController, ModalController, ViewController } from 'ionic-angular';
+import { NavController, ModalController, ViewController, App } from 'ionic-angular';
 
 @Component({
     templateUrl: 'tabs.html'
@@ -24,7 +24,8 @@ export class TabsPage {
     constructor(
         public navCtrl: NavController,
         public modalCtrl: ModalController,
-        public viewCtrl: ViewController
+        public viewCtrl: ViewController,
+        public appCtrl: App,
     ) {
 
     }

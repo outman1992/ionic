@@ -60,6 +60,7 @@ export class HomePage {
     pushDetail(id) {
         // this.viewCtrl.dismiss();
         this.appCtrl.getRootNav().push(DetailPage, { id: id });
+        // this.navCtrl.push(DetailPage, { id: id });
     }
 
     doInfinite(infiniteScroll) {

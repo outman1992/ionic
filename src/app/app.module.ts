@@ -5,6 +5,8 @@ import { CategoryPage } from '../pages/category/category';
 import { MessagePage } from '../pages/message/message';
 import { UsercenterPage } from '../pages/usercenter/usercenter';
 import { PublishPage } from '../pages/publish/publish';
+import { SellMthodPage } from '../pages/publish/sellmethod';
+import { PublishCategoryPage } from '../pages/publish/category';
 import { LoginPage } from '../pages/usercenter/login';
 import { HomePage } from '../pages/home/home';
 import { DetailPage } from '../pages/home/detail';
@@ -22,7 +24,9 @@ import { SearchPage } from '../pages/search/search';
     HomePage,
     DetailPage,
     TabsPage,
-    SearchPage
+    SearchPage,
+    SellMthodPage,
+    PublishCategoryPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -38,7 +42,9 @@ import { SearchPage } from '../pages/search/search';
     HomePage,
     DetailPage,
     TabsPage,
-    SearchPage
+    SearchPage,
+    SellMthodPage,
+    PublishCategoryPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
 import { LoginPage } from '../usercenter/login';
+import { SellMthodPage } from './sellmethod';
+import { PublishCategoryPage } from './category';
 import { NavController, ModalController, ViewController, ActionSheetController } from 'ionic-angular';
 import { Camera } from 'ionic-native';
 
@@ -16,6 +18,9 @@ export class PublishPage {
     };
 
     imageArray: any;
+    sellmethod: any;
+    category: any;
+    cdata: any;
 
     constructor(
         public navCtrl: NavController,
@@ -81,11 +86,37 @@ export class PublishPage {
             let base64Image = 'data:image/jpeg;base64,' + imageData;
             // let base64Image = imageData;
             this.imageArray.push(base64Image);
-            alert(base64Image);
+            // alert(base64Image);
         }, (err) => {
             alert(err);
             // Handle error
         });
+    }
+
+    popSellMethod(){
+        let modal = this.modalCtrl.create(SellMthodPage, { method: this.sellmethod });
+
+        modal.onDidDismiss(data => {
+            // console.log(data);
+            this.sellmethod = data;
+        });
+
+        modal.present();
+    }
+
+    popCategory(){
+        let modal = this.modalCtrl.create(PublishCategoryPage, { category: this.category });
+
+        modal.onDidDismiss(data => {
+            // debugger
+            // data = data ? JSON.parse(data) : undefined;
+            if (data.type == 1) {
+                this.category = data.cid;
+                this.cdata = JSON.parse(data.cdata);
+            }
+        });
+
+        modal.present();
     }
 
 }

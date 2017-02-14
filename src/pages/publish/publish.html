@@ -33,7 +33,7 @@
                 <div><span>添加照片</span></div>
             </ion-buttons>
         </ion-item>
-        <ion-grid>
+        <ion-grid class="price-grid">
             <ion-row>
                 <ion-col width-50>
                     <ion-item>
@@ -49,13 +49,24 @@
                 </ion-col>
             </ion-row>
         </ion-grid>
-        <ion-item>
+        <button ion-item class="sell-method" (click)="popSellMethod()">
+            <span class="label-name">交易</span>
+            <span *ngIf="sellmethod == 1">在线交易</span>
+            <span *ngIf="sellmethod == 2">线下交易</span>
+            <span *ngIf="!sellmethod">请选择交易方式</span>
+        </button>
+        <ion-item *ngIf="sellmethod == 1">
             <ion-label>运费</ion-label>
             <ion-input placeholder="￥0.0" clearInput></ion-input>
         </ion-item>
-        <button ion-item>
+        <ion-item *ngIf="sellmethod == 2">
+            <ion-label>地址</ion-label>
+            <ion-input placeholder="请输入交易地址" clearInput></ion-input>
+        </ion-item>
+        <button ion-item (click)="popCategory()">
             <span class="label-name">分类</span>
-            <span>请选择分类</span>
+            <span *ngIf="!category">请选择分类</span>
+            <span *ngIf="category">{{cdata.cname}}</span>
         </button>
     </ion-list>
 </ion-content>

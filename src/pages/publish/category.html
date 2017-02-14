@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar color="tgreen">
+        <ion-buttons end>
+            <button ion-button (click)="goback()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>选择分类</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-list radio-group [(ngModel)]="category">
+
+        <ion-item>
+            <ion-label>书籍</ion-label>
+            <ion-radio (click)="select($event)" value="1" data='{"cid": "1", "cname": "书籍"}'></ion-radio>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>电器</ion-label>
+            <ion-radio (click)="select($event)" value="2" data='{"cid": "2", "cname": "电器"}'></ion-radio>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>代步</ion-label>
+            <ion-radio (click)="select($event)" value="3" data='{"cid": "3", "cname": "代步"}'></ion-radio>
+        </ion-item>
+
+    </ion-list>
+</ion-content>
