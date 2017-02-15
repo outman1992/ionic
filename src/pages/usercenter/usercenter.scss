@@ -32,14 +32,16 @@
     color: #11cd6e;
 }
 
-.label {
+.header-btns p {
     margin: 0;
 }
 
-.item-inner {
-    padding: 0;
-}
-
+// .label {
+//     margin: 0;
+// }
+// .item-inner {
+//     padding: 0;
+// }
 .user button {
     color: #11cd6e;
     border-bottom: #e5e5e5 solid 1px;
@@ -53,4 +55,9 @@
 
 .user button.item-md .item-inner {
     margin-left: 10px;
+}
+
+.user .list {
+    margin-bottom: 0;
+    margin-top: 16px;
 }

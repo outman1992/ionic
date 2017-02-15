@@ -10,25 +10,38 @@
         <div class="header-image">
             <img src="./assets/images/header.png" alt="">
         </div>
-        <div class="header-btns">
-            <button ion-button outline>登录</button>
+        <div *ngIf="!login" class="header-btns">
+            <button ion-button outline (click)="popLogin()">登录</button>
             <button ion-button outline>注册</button>
+        </div>
+        <div *ngIf="login" class="header-btns">
+            <p>小萬萬</p>
         </div>
     </div>
     <div class="user">
         <ion-list>
-            <button ion-item>
+            <button ion-item (click)="popSetting()">
                 <ion-icon name="filing" item-left></ion-icon>
                 <h3>我发布的</h3>
             </button>
-            <button ion-item>
+            <button ion-item (click)="popSetting()">
+                <ion-icon name="log-out" item-left></ion-icon>
+                <h3>我卖掉的</h3>
+            </button>
+            <button ion-item (click)="popSetting()">
                 <ion-icon name="cart" item-left></ion-icon>
                 <h3>我购买的</h3>
             </button>
-            <button ion-item>
+            <button ion-item (click)="popSetting()">
                 <ion-icon name="heart" item-left></ion-icon>
                 <h3>我想要的</h3>
             </button>
+        </ion-list>
+        <ion-list>
+            <button ion-item (click)="popSetting()">
+                <ion-icon name="settings" item-left></ion-icon>
+				<h3>设置</h3>
+			</button>
         </ion-list>
     </div>
 </ion-content>
