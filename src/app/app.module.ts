@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { CategoryPage } from '../pages/category/category';
 import { MessagePage } from '../pages/message/message';
+import { MessageDetailPage } from '../pages/message/messagedetail';
 import { UsercenterPage } from '../pages/usercenter/usercenter';
 import { PublishPage } from '../pages/publish/publish';
 import { SellMthodPage } from '../pages/publish/sellmethod';
@@ -28,7 +29,8 @@ import { SearchPage } from '../pages/search/search';
 		SearchPage,
 		SellMthodPage,
 		PublishCategoryPage,
-		SettingPage
+		SettingPage,
+		MessageDetailPage
 	],
 	imports: [
 		IonicModule.forRoot(MyApp)
@@ -47,7 +49,8 @@ import { SearchPage } from '../pages/search/search';
 		SearchPage,
 		SellMthodPage,
 		PublishCategoryPage,
-		SettingPage
+		SettingPage,
+		MessageDetailPage
 	],
 	providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
 })

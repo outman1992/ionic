@@ -6,11 +6,30 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
-    <ion-list>
-        <ion-list-header>Follow us on Twitter</ion-list-header>
-        <ion-item>
-            <ion-icon name="ionic" item-left></ion-icon>
-            @ionicframework
-        </ion-item>
+    <ion-list class="message-list">
+        <button ion-item (click)="goChat()">
+			<ion-avatar item-left>
+                <img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png">
+            </ion-avatar>
+            <h2>淘二淘</h2>
+            <p>app上线活动，点击查看详情！</p>
+            <ion-badge item-right color="danger">5</ion-badge>
+		</button>
+        <button ion-item>
+			<ion-avatar item-left>
+                <img src="./assets/images/header.png">
+            </ion-avatar>
+            <h2>张小三</h2>
+            <p>你的那个东西卖不卖？</p>
+            <ion-badge item-right color="danger">2</ion-badge>
+		</button>
+        <button ion-item>
+			<ion-avatar item-left>
+                <img src="./assets/images/header.png">
+            </ion-avatar>
+            <h2>李小四</h2>
+            <p>今天天气不错！</p>
+            <ion-badge item-right color="danger">1</ion-badge>
+		</button>
     </ion-list>
 </ion-content>
