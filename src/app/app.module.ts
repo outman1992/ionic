@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { CategoryPage } from '../pages/category/category';
+import { ActivityPage } from '../pages/activity/activity';
 import { MessagePage } from '../pages/message/message';
 import { MessageDetailPage } from '../pages/message/messagedetail';
 import { UsercenterPage } from '../pages/usercenter/usercenter';
@@ -18,7 +18,7 @@ import { SearchPage } from '../pages/search/search';
 @NgModule({
 	declarations: [
 		MyApp,
-		CategoryPage,
+		ActivityPage,
 		MessagePage,
 		UsercenterPage,
 		PublishPage,
@@ -38,7 +38,7 @@ import { SearchPage } from '../pages/search/search';
 	bootstrap: [IonicApp],
 	entryComponents: [
 		MyApp,
-		CategoryPage,
+		ActivityPage,
 		MessagePage,
 		UsercenterPage,
 		PublishPage,

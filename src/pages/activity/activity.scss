@@ -1,0 +1,24 @@
+.activity-list ion-card ion-card-title{
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+.activity-list ion-card p{
+    color: #999;
+}
+.activity-list .card-content{
+    padding-top: 4px;
+}
+.activity-stats{
+    border: #999 solid 1px;
+    padding: 0 10px;
+    line-height: 20px;
+    border-radius: 10px;
+}
+.activity-stats.ing{
+    border-color: #11cd6e;
+    color: #11cd6e;
+}
+.activity-time{
+    margin-left: 10px;
+    float: right;
+}
