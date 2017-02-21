@@ -16,7 +16,7 @@
 <ion-content>
     <ion-slides autoplay="2000" pager="true" loop="true">
         <ion-slide *ngFor="let item of focus">
-            <img src="{{item.img}}">
+            <img src="{{'http://127.0.0.1:3000' + item.image}}">
         </ion-slide>
     </ion-slides>
     <div class="category">
