@@ -9,6 +9,7 @@ import { PublishPage } from '../pages/publish/publish';
 import { SellMthodPage } from '../pages/publish/sellmethod';
 import { PublishCategoryPage } from '../pages/publish/category';
 import { LoginPage } from '../pages/usercenter/login';
+import { RegisterPage } from '../pages/usercenter/register';
 import { SettingPage } from '../pages/usercenter/setting';
 import { HomePage } from '../pages/home/home';
 import { DetailPage } from '../pages/home/detail';
@@ -23,6 +24,7 @@ import { SearchPage } from '../pages/search/search';
 		UsercenterPage,
 		PublishPage,
 		LoginPage,
+		RegisterPage,
 		HomePage,
 		DetailPage,
 		TabsPage,
@@ -43,6 +45,7 @@ import { SearchPage } from '../pages/search/search';
 		UsercenterPage,
 		PublishPage,
 		LoginPage,
+		RegisterPage,
 		HomePage,
 		DetailPage,
 		TabsPage,

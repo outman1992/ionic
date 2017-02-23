@@ -4,6 +4,8 @@ import { LoginPage } from '../usercenter/login';
 import { SettingPage } from '../usercenter/setting';
 import { NavController, ModalController, ToastController } from 'ionic-angular';
 
+import { AppConfig } from '../../app/app.config';
+
 @Component({
 	selector: 'page-usercenter',
 	templateUrl: 'usercenter.html'
@@ -11,29 +13,44 @@ import { NavController, ModalController, ToastController } from 'ionic-angular';
 export class UsercenterPage {
 
 	login: any;
+	user: any;
+	api: String = AppConfig.getProdUrl();
 
 	constructor(
 		public navCtrl: NavController,
 		public modalCtrl: ModalController,
 		public toastCtrl: ToastController
 	) {
-		this.login = localStorage.getItem('token') ? true : false;
+		// debugger
+		this.user = JSON.parse(localStorage.getItem('user'))
+		this.login = localStorage.getItem('token') ? this.user : null;
+	}
+
+	ionViewWillEnter() {
+		this.user = JSON.parse(localStorage.getItem('user'))
+		this.login = localStorage.getItem('token') ? this.user : null;
 	}
 
 	popLogin() {
+		// debugger
 		let modal = this.modalCtrl.create(LoginPage);
 		modal.onDidDismiss((data) => {
-			this.login = localStorage.getItem('token') ? true : false;
+			// debugger
+			this.user = JSON.parse(localStorage.getItem('user'))
+			this.login = localStorage.getItem('token') ? this.user : null;
 		})
 		modal.present();
 	}
 
 	popSetting() {
+		// debugger
 		if (!this.checkUserLogin()) { return false };
 
 		let modal = this.modalCtrl.create(SettingPage);
 		modal.onDidDismiss((data) => {
-			this.login = localStorage.getItem('token') ? true : false;
+			// debugger
+			this.user = JSON.parse(localStorage.getItem('user'))
+			this.login = localStorage.getItem('token') ? this.user : null;
 		})
 		modal.present();
 	}

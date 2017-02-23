@@ -6,7 +6,12 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
-    <ion-list class="message-list">
+    <div *ngIf="!login" class="no-login-btns">
+        <p>您还没有登录</p>
+        <button ion-button outline (click)="popLogin()">登录</button>
+        <button ion-button outline>注册</button>
+    </div>
+    <ion-list *ngIf="login" class="message-list">
         <button ion-item (click)="goChat()">
 			<ion-avatar item-left>
                 <img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png">

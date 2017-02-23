@@ -17,6 +17,7 @@ export class SettingPage {
 
 	logout() {
 		localStorage.removeItem('token');
+		localStorage.removeItem('user');
 		this.viewCtrl.dismiss();
 	}
 

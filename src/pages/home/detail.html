@@ -12,17 +12,17 @@
     <div *ngIf="detail">
         <ion-item class="detail-header">
             <ion-avatar item-left>
-                <img src="{{detail.sellerHeader}}">
+                <img src="{{detail.user.avatar ? api + detail.user.avatar : api + '/images/web/user/default.png'}}">
             </ion-avatar>
-            <h2>{{detail.sellerName}}</h2>
-            <h3 class="goods-title" item-right color="danger">￥{{detail.price}}</h3>
+            <h2>{{detail.user.nick_name}}</h2>
+            <h3 class="goods-title" item-right color="danger">￥{{detail.good_price}}</h3>
         </ion-item>
         <div class="detail-des" padding>
-            <p>{{detail.description}}</p>
+            <p>{{detail.good_description}}</p>
         </div>
         <div class="detail-images" padding>
-            <div class="image-item" *ngFor="let item of detail.image">
-                <img src="{{item}}">
+            <div class="image-item" *ngFor="let item of detail.good_images">
+                <img src="{{api + item}}">
             </div>
         </div>
     </div>

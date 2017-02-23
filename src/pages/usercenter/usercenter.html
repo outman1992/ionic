@@ -8,14 +8,14 @@
 <ion-content>
     <div class="user-header">
         <div class="header-image">
-            <img src="./assets/images/header.png" alt="">
+            <img src="{{login && login.avatar ? api + login.avatar : api + '/images/web/user/default.png'}}">
         </div>
         <div *ngIf="!login" class="header-btns">
             <button ion-button outline (click)="popLogin()">登录</button>
             <button ion-button outline>注册</button>
         </div>
         <div *ngIf="login" class="header-btns">
-            <p>小萬萬</p>
+            <p>{{login.nick_name}}</p>
         </div>
     </div>
     <div class="user">

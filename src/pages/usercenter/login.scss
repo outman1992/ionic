@@ -32,3 +32,16 @@ ion-icon {
     border-radius: 5px;
     width: 60%;
 }
+
+.btns {
+    padding-left: 0;
+    background-color: #eee;
+}
+
+.btns.item-block .item-inner {
+    padding-right: 0;
+}
+
+.forget.item-button {
+    margin-right: 0;
+}

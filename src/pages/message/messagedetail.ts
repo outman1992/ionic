@@ -8,11 +8,13 @@ import { NavController, ViewController } from 'ionic-angular';
 })
 export class MessageDetailPage {
 
+	user: any;
+
 	constructor(
 		public navCtrl: NavController,
 		public viewCtrl: ViewController
 	) {
-
+		this.user = '123123'
 	}
 	goback() {
 		this.viewCtrl.dismiss();

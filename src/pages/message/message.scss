@@ -9,3 +9,17 @@
 .message-list button {
     border-bottom: #efefef solid 1px;
 }
+
+.no-login-btns {
+    text-align: center;
+}
+
+.no-login-btns button {
+    border-color: #11cd6e;
+    color: #11cd6e;
+}
+
+.no-login-btns p {
+    line-height: 80px;
+    color: #11cd6e;
+}

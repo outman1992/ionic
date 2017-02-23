@@ -16,7 +16,8 @@ export class HomePage {
 	category: any;
 	current: string;
 	goods: any;
-	page: any;
+	page: any = 1;
+	count: any;
 	dataOver: any;
 	api: String = AppConfig.getProdUrl();
 
@@ -80,29 +81,25 @@ export class HomePage {
 
 	doInfinite(infiniteScroll) {
 
+		let type = this.current == 'new' ? '1' : '2'
+
 		// debugger
-		if (this.page <= 2) {
-			this.page++
+		if (this.page <= this.count) {
 
 			setTimeout(() => {
-				this.http.get('http://rap.taobao.org/mockjsdata/8438/api/index/goods').subscribe(data => {
-					// console.log(data.json().result.data);
-					// this.goods.concat(data.json().result.data);
-					// console.log(this.goods);
-					var that = this;
-					data.json().result.data.forEach(function (v) {
+				this.http.get(this.api + '/app/home_list?type=' + type + '&page=' + this.page).subscribe(data => {
+					let that = this
+					data.json().result.result.forEach(function (v) {
+						v.good_images = JSON.parse(v.good_images)
 						that.goods.push(v)
 					})
-					// console.log(this.goods);
-					// console.log(typeof that.goods)
-					// console.log(data.json().result)
-					// console.log('Async operation has ended');
 					infiniteScroll.complete();
+					this.page++
+
 				});
 
-				// console.log('Async operation has ended');
-				// infiniteScroll.complete();
 			}, 500);
+
 		} else {
 			this.dataOver = true;
 			infiniteScroll.enable(false);
@@ -112,21 +109,30 @@ export class HomePage {
 	loadList(type) {
 		if (type == 1) {
 			this.current = 'new';
+			this.page = 1;
+			this.goods = [];
 			this.loadGoodList();
 		} else if (type == 2) {
 			this.current = 'recommend';
+			this.page = 1;
+			this.goods = [];
 			this.loadGoodList();
 		}
 	}
 
 	//加载数据方法
 	loadGoodList() {
-		this.http.get('http://rap.taobao.org/mockjsdata/8438/api/index/goods').subscribe(data => {
-			this.goods = data.json().result.data;
-			// console.log(typeof that.goods)
-			// console.log(data.json().result)
+		let type = this.current == 'new' ? '1' : '2'
+		this.http.get(this.api + '/app/home_list?type=' + type + '&page=' + this.page).subscribe(data => {
+			this.goods = data.json().result.result;
+			this.count = data.json().result.count
+			let that = this
+			this.goods.forEach(function (v) {
+				v.good_images = JSON.parse(v.good_images)
+			})
+
 			this.dataOver = false;
-			this.page = 1;
+			this.page++;
 		});
 	}
 

@@ -16,7 +16,7 @@
 <ion-content>
     <ion-slides autoplay="2000" pager="true" loop="true">
         <ion-slide *ngFor="let item of focus">
-            <img src="{{'http://127.0.0.1:3000' + item.image}}">
+            <img src="{{api + item.image}}">
         </ion-slide>
     </ion-slides>
     <div class="category">
@@ -44,30 +44,30 @@
         </ion-grid>
     </div>
     <div class="goods-list">
-        <ion-card *ngFor="let item of goods" (click)="pushDetail(item.id)">
+        <ion-card *ngFor="let item of goods" (click)="pushDetail(item.gid)">
             <ion-item>
-                <ion-avatar item-left><img src="{{item.sellerHeader}}"></ion-avatar>
-                <h2>{{item.sellerName}}</h2>
-                <ion-note item-right>发布于 16分钟前</ion-note>
+                <ion-avatar item-left><img src="{{item.user.avatar ? api + item.user.avatar : api + '/images/web/user/default.png'}}"></ion-avatar>
+                <h2>{{item.user.nick_name}}</h2>
+                <ion-note item-right>发布于 {{item.create_time}}</ion-note>
             </ion-item>
             <ion-scroll scrollX="true" class="good-images">
-                <div class="good-images-scroll" [ngStyle]="{'width': + (item.image.length * 125) + 'px'}">
+                <div class="good-images-scroll" [ngStyle]="{'width': + (item.good_images.length * 125) + 'px'}">
                     <ion-grid>
                         <ion-row>
-                            <ion-col *ngFor="let image of item.image"><img src="{{image}}"></ion-col>
+                            <ion-col *ngFor="let image of item.good_images"><img src="{{api + image}}"></ion-col>
                         </ion-row>
                     </ion-grid>
                 </div>
             </ion-scroll>
             <ion-item class="good-info-bar">
-                <div class="price" item-left>￥{{item.price}}</div>
+                <div class="price" item-left>￥{{item.good_price}}</div>
                 <div class="views" item-right class="good-info">
                     <ion-icon name="eye" item-left></ion-icon>
-                    <span>150次浏览</span>
+                    <span>{{item.views}}次浏览</span>
                 </div>
                 <div class="want" item-right class="good-info">
                     <ion-icon name="heart" item-left></ion-icon>
-                    <span>150人想要</span>
+                    <span>{{item.wants}}人想要</span>
                 </div>
             </ion-item>
             <ion-card-content>
