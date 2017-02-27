@@ -12,7 +12,7 @@
 </ion-header>
 <ion-content>
     <div class="message-list">
-        <div class="message-item clearfix left">
+        <!--<div class="message-item clearfix left">
             <img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png" alt="">
             <div class="message-content">
                 你好，在吗？
@@ -23,60 +23,18 @@
             <div class="message-content">
                 在的，你好
             </div>
-        </div>
-        <div class="message-item clearfix left">
-            <img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png" alt="">
+        </div>-->
+        <div *ngFor="let item of msglist" class="message-item clearfix {{item.type == 'come' ? 'left' : 'right'}} ">
+            <img src="{{header}}" alt="">
             <div class="message-content">
-                你的这个二货还在吗？
-            </div>
-        </div>
-        <div class="message-item clearfix right">
-            <img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png" alt="">
-            <div class="message-content">
-                你想要？
-            </div>
-        </div>
-        <div class="message-item clearfix left">
-            <img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png" alt="">
-            <div class="message-content">
-                是的
-            </div>
-        </div>
-        <div class="message-item clearfix right">
-            <img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png" alt="">
-            <div class="message-content">
-                OK
-            </div>
-        </div>
-        <div class="message-item clearfix left">
-            <img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png" alt="">
-            <div class="message-content">
-                嗯嗯
-            </div>
-        </div>
-        <div class="message-item clearfix right">
-            <img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png" alt="">
-            <div class="message-content">
-                下单吧
-            </div>
-        </div>
-        <div class="message-item clearfix right">
-            <img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png" alt="">
-            <div class="message-content">
-                下单吧
-            </div>
-        </div>
-        <div class="message-item clearfix right">
-            <img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png" alt="">
-            <div class="message-content">
-                下单吧
+                {{item.content}}
             </div>
         </div>
     </div>
 </ion-content>
 <ion-footer class="submit-msg">
     <ion-item>
-        <input item-left type="text" placeholder="输入信息文本">
-        <button item-right ion-button>发送</button>
+        <input item-left type="text" placeholder="输入信息文本" [(ngModel)]="message.content">
+        <button item-right ion-button (click)="send()">发送</button>
     </ion-item>
 </ion-footer>

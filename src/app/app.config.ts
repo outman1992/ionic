@@ -4,4 +4,6 @@ export class AppConfig {
 	public static getProdUrl() {
 		return "http://127.0.0.1:3000";
 	}
+
+	public static socket: null
 }

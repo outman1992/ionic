@@ -55,7 +55,7 @@
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-right-color: #11cd6e;
+    border-right-color: #fff;
     border-width: 9px;
     margin-top: -9px;
 }
@@ -65,8 +65,8 @@
 }
 
 .left .message-content {
-    background-color: #11cd6e;
-    color: #fff;
+    background-color: #fff;
+    color: #333;
 }
 
 .right img,
@@ -75,8 +75,8 @@
 }
 
 .right .message-content {
-    background-color: #fff;
-    color: #333;
+    background-color: #11cd6e;
+    color: #fff;
 }
 
 .right .message-content:after {
@@ -88,7 +88,7 @@
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-left-color: #fff;
+    border-left-color: #11cd6e;
     border-width: 9px;
     margin-top: -9px;
 }

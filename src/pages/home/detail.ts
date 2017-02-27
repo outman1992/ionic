@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { App, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
 import { AppConfig } from '../../app/app.config';
+import { MessageDetailPage } from '../message/messagedetail';
 
 @Component({
 	selector: 'page-detail',
@@ -18,9 +19,11 @@ export class DetailPage {
 
 	constructor(
 		public navCtrl: NavController,
+		public appCtrl: App,
 		public params: NavParams,
 		public http: Http,
-		public loadCtrl: LoadingController
+		public loadCtrl: LoadingController,
+		public modalCtrl: ModalController
 	) {
 		this.id = this.params.get('id');
 
@@ -52,6 +55,10 @@ export class DetailPage {
 
 	goback() {
 		this.navCtrl.pop();
+	}
+
+	chat() {
+		this.appCtrl.getRootNav().push(MessageDetailPage, { uid: this.detail['uid'] });
 	}
 
 

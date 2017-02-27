@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
+import * as io from 'socket.io-client'
 
 import { NavController, ViewController } from 'ionic-angular';
+import { AppConfig } from '../../app/app.config';
 
 @Component({
 	selector: 'page-setting',
 	templateUrl: 'setting.html'
 })
 export class SettingPage {
+
+	socket: any = AppConfig.socket;
 
 	constructor(
 		public navCtrl: NavController,
@@ -18,6 +22,7 @@ export class SettingPage {
 	logout() {
 		localStorage.removeItem('token');
 		localStorage.removeItem('user');
+		this.socket.disconnect();
 		this.viewCtrl.dismiss();
 	}
 
