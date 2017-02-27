@@ -1,18 +1,18 @@
 <ion-header>
-    <ion-toolbar color="tgreen">
-        <ion-buttons left>
-            <button ion-button (click)="goback()">
+  <ion-toolbar color="tgreen">
+    <ion-buttons left>
+      <button ion-button (click)="goback()">
                 <ion-icon name="arrow-back"></ion-icon>
             </button>
-        </ion-buttons>
-        <ion-title>
-            {{user}}
-        </ion-title>
-    </ion-toolbar>
+    </ion-buttons>
+    <ion-title>
+      {{user}}
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
-    <div class="message-list">
-        <!--<div class="message-item clearfix left">
+  <div class="message-list">
+    <!--<div class="message-item clearfix left">
             <img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png" alt="">
             <div class="message-content">
                 你好，在吗？
@@ -24,17 +24,17 @@
                 在的，你好
             </div>
         </div>-->
-        <div *ngFor="let item of msglist" class="message-item clearfix {{item.type == 'come' ? 'left' : 'right'}} ">
-            <img src="{{header}}" alt="">
-            <div class="message-content">
-                {{item.content}}
-            </div>
-        </div>
+    <div *ngFor="let item of msglist" class="message-item clearfix {{item.type == 'come' ? 'left' : 'right'}} ">
+      <img src="{{item.header}}" alt="">
+      <div class="message-content">
+        {{item.content}}
+      </div>
     </div>
+  </div>
 </ion-content>
 <ion-footer class="submit-msg">
-    <ion-item>
-        <input item-left type="text" placeholder="输入信息文本" [(ngModel)]="message.content">
-        <button item-right ion-button (click)="send()">发送</button>
-    </ion-item>
+  <ion-item>
+    <input item-left type="text" placeholder="输入信息文本" [(ngModel)]="message.content">
+    <button item-right ion-button (click)="send()">发送</button>
+  </ion-item>
 </ion-footer>

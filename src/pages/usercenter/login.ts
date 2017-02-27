@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { NavController, ViewController, ToastController, LoadingController } from 'ionic-angular';
 import { Md5 } from 'ts-md5/dist/md5';
+import * as io from 'socket.io-client'
 
 import { RegisterPage } from './register';
 import { AppConfig } from '../../app/app.config';
@@ -15,6 +16,7 @@ export class LoginPage {
 
 	private user: any;
 	api: String = AppConfig.getProdUrl();
+	socket: any;
 
 	constructor(
 		public navCtrl: NavController,
@@ -71,13 +73,16 @@ export class LoginPage {
 					localStorage.setItem('token', Data.token);
 					localStorage.setItem('user', JSON.stringify(Data.result));
 
+					//登录socket
+					if (localStorage.getItem('token')) { AppConfig.connect(); }
+
 					setTimeout(() => {
 						toast.dismiss();
 						this.viewCtrl.dismiss();
 					}, 1000);
 				} else {
 					loading.dismiss();
-					toastOpt.message = Data.message;
+					toastOpt.message = Data.msg;
 					let toast = this.toastCtrl.create(toastOpt);
 					toast.present();
 				}

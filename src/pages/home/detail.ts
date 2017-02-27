@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { App, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
+import { App, NavController, NavParams, LoadingController, ModalController, ToastController } from 'ionic-angular';
 import { AppConfig } from '../../app/app.config';
 import { MessageDetailPage } from '../message/messagedetail';
+import { LoginPage } from '../usercenter/login';
 
 @Component({
 	selector: 'page-detail',
@@ -23,7 +24,8 @@ export class DetailPage {
 		public params: NavParams,
 		public http: Http,
 		public loadCtrl: LoadingController,
-		public modalCtrl: ModalController
+		public modalCtrl: ModalController,
+		public toastCtrl: ToastController
 	) {
 		this.id = this.params.get('id');
 
@@ -58,6 +60,20 @@ export class DetailPage {
 	}
 
 	chat() {
+		if (localStorage.getItem('token') && localStorage.getItem('user')) {
+			this.goMsgDetailPage();
+		} else {
+			let modal = this.modalCtrl.create(LoginPage);
+			modal.onDidDismiss((data) => {
+				if (localStorage.getItem('token') && localStorage.getItem('user')) {
+					this.goMsgDetailPage();
+				}
+			})
+			modal.present();
+		}
+	}
+
+	goMsgDetailPage() {
 		this.appCtrl.getRootNav().push(MessageDetailPage, { uid: this.detail['uid'] });
 	}
 

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import * as io from 'socket.io-client'
 
 import { NavController, ViewController } from 'ionic-angular';
 import { AppConfig } from '../../app/app.config';

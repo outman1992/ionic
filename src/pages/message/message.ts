@@ -22,26 +22,7 @@ export class MessagePage {
 		public modalCtrl: ModalController,
 	) {
 		this.login = localStorage.getItem('token') ? true : false;
-		AppConfig.socket = io('http://127.0.0.1:3000');
-		// this.socket = io('http://127.0.0.1:3000');
-		this.socket = AppConfig.socket;
-		this.socket.on('reguser', function (data) {
-			console.log(data);
-		});
-		// this.socket.on('chatMessage', function (data) {
-		// 	console.log(data);
-		// });
-		// debugger
-		//登录socket
-		if (localStorage.getItem('token')) {
-			this.user = JSON.parse(localStorage.getItem('user'))
-			this.socket.emit('message', {
-				content: {
-					uid: this.user.uid
-				},
-				type: 'reg'
-			});
-		}
+
 	}
 
 	goChat() {
@@ -50,6 +31,8 @@ export class MessagePage {
 
 	ionViewWillEnter() {
 		this.login = localStorage.getItem('token') ? true : false;
+		//登录socket
+		if (localStorage.getItem('token')) { AppConfig.connect(); }
 	}
 
 	popLogin() {
