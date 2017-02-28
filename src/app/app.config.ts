@@ -22,7 +22,7 @@ export class AppConfig {
 			});
 
 			this.socket.on('reguser', function (data) {
-				console.log(data);
+				console.log('聊天系统登录成功', '人数：' + data.num);
 			});
 		}
 	}

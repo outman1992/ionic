@@ -12,29 +12,21 @@
         <button ion-button outline>注册</button>
     </div>
     <ion-list *ngIf="login" class="message-list">
-        <button ion-item (click)="goChat()">
+        <!--<button ion-item (click)="goChat()">
 			<ion-avatar item-left>
                 <img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png">
             </ion-avatar>
             <h2>淘二淘</h2>
             <p>app上线活动，点击查看详情！</p>
             <ion-badge item-right color="danger">5</ion-badge>
-		</button>
-        <button ion-item>
+		</button>-->
+        <button ion-item *ngFor="let item of contacts" (click)="goChat(item.uid)">
 			<ion-avatar item-left>
-                <img src="./assets/images/header.png">
+                <img src="{{item.avatar == '' ? api + '/images/web/user/default.png' : api + item.avatar}}">
             </ion-avatar>
-            <h2>张小三</h2>
-            <p>你的那个东西卖不卖？</p>
-            <ion-badge item-right color="danger">2</ion-badge>
-		</button>
-        <button ion-item>
-			<ion-avatar item-left>
-                <img src="./assets/images/header.png">
-            </ion-avatar>
-            <h2>李小四</h2>
-            <p>今天天气不错！</p>
-            <ion-badge item-right color="danger">1</ion-badge>
+            <h2>{{item.nick_name}}</h2>
+            <p>{{item.content}}</p>
+			<ion-badge *ngIf="item.notread > 0"  item-right color="danger">{{item.notread}}</ion-badge>
 		</button>
     </ion-list>
 </ion-content>
