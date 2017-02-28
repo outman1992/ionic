@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { Http, Headers, RequestOptions } from '@angular/http';
-import { NavController, ViewController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, ViewController, NavParams, ToastController, Content } from 'ionic-angular';
 import { AppConfig } from '../../app/app.config';
 
 @Component({
@@ -9,6 +9,8 @@ import { AppConfig } from '../../app/app.config';
 	templateUrl: 'messagedetail.html'
 })
 export class MessageDetailPage {
+
+	@ViewChild(Content) content: Content
 
 	user: any;
 	socket: any = AppConfig.socket
@@ -28,10 +30,6 @@ export class MessageDetailPage {
 	) {
 		this.message = ''
 		this.to = this.params.get('uid')
-
-	}
-
-	ionViewDidLoad() {
 
 	}
 
@@ -106,8 +104,13 @@ export class MessageDetailPage {
 						header: header_path
 					})
 				})
+
 			}
 		})
+	}
+
+	ionViewDidEnter() {
+		this.content.scrollToBottom()
 	}
 
 	goback() {
@@ -128,5 +131,7 @@ export class MessageDetailPage {
 			from: this.from.uid,
 			type: 'chatMessage'
 		});
+
+		this.content.scrollToBottom()
 	}
 }
