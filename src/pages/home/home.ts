@@ -58,6 +58,10 @@ export class HomePage {
 		this.dataOver = false;
 	}
 
+	ionViewDidEnter() {
+		if (localStorage.getItem('token')) { AppConfig.connect(); }
+	}
+
 	getFocus() {
 		// debugger
 		this.http.get(this.api + '/app/get_focus').subscribe((data) => {

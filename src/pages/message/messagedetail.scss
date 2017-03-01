@@ -132,3 +132,7 @@
 .submit-msg button[ion-button] span {
     font-size: 1.2em
 }
+
+.has-refresher>.scroll-content {
+    border-top: none;
+}

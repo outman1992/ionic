@@ -3,6 +3,6 @@
     <ion-tab [root]="tab2Root" tabTitle="活动" tabIcon="calendar"></ion-tab>
     <ion-tab (ionSelect)="goPublish()" tabTitle="发布" tabIcon="add-circle"></ion-tab>
     <!--  [root]="tab3Root" [root]="tab5Root" -->
-    <ion-tab [root]="tab4Root" tabTitle="消息" tabIcon="chatbubbles"></ion-tab>
+    <ion-tab [root]="tab4Root" tabTitle="消息" tabIcon="chatbubbles" (ionSelect)="readMsg()" tabBadge="{{notReadCount}}" tabBadgeStyle="danger"></ion-tab>
     <ion-tab [root]="tab5Root" tabTitle="我的" tabIcon="person"></ion-tab>
 </ion-tabs>

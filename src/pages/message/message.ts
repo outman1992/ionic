@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import * as io from 'socket.io-client'
 
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { App, NavController, ModalController, ToastController } from 'ionic-angular';
@@ -27,10 +26,11 @@ export class MessagePage {
 		private toastCtrl: ToastController,
 	) {
 		this.login = localStorage.getItem('token') ? true : false;
-		this.user = JSON.parse(localStorage.getItem('user'))
+		this.user = JSON.parse(localStorage.getItem('user'));
 	}
 
-	goChat(uid) {
+	goChat(uid, i) {
+		this.contacts[i].notread = 0;
 		this.appCtrl.getRootNav().push(MessageDetailPage, { uid: uid });
 	}
 
@@ -39,6 +39,28 @@ export class MessagePage {
 		//登录socket
 		if (localStorage.getItem('token')) { AppConfig.connect(); }
 
+		this.socket = AppConfig.socket;
+		// debugger
+		let that = this;
+		this.socket.on('chatMessage', function (data) {
+			that.getContects();
+		})
+
+		//加载联系人
+		this.getContects();
+	}
+
+	popLogin() {
+		// debugger
+		let modal = this.modalCtrl.create(LoginPage);
+		modal.onDidDismiss((data) => {
+			// debugger
+			this.login = localStorage.getItem('token') ? true : false;
+		})
+		modal.present();
+	}
+
+	getContects() {
 		let headers = new Headers({ 'Content-Type': 'application/json' }); //其实不表明 json 也可以, ng 默认好像是 json
 		let options = new RequestOptions({ headers: headers });
 		this.http.post(this.api + '/app/get_chat_person', JSON.stringify({ uid: this.user.uid }), options).subscribe((data) => {
@@ -57,15 +79,5 @@ export class MessagePage {
 				this.contacts = Data.result;
 			}
 		})
-	}
-
-	popLogin() {
-		// debugger
-		let modal = this.modalCtrl.create(LoginPage);
-		modal.onDidDismiss((data) => {
-			// debugger
-			this.login = localStorage.getItem('token') ? true : false;
-		})
-		modal.present();
 	}
 }

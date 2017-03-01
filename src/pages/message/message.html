@@ -20,7 +20,7 @@
             <p>app上线活动，点击查看详情！</p>
             <ion-badge item-right color="danger">5</ion-badge>
 		</button>-->
-        <button ion-item *ngFor="let item of contacts" (click)="goChat(item.uid)">
+        <button ion-item *ngFor="let item of contacts; let i=index" (click)="goChat(item.uid, i)">
 			<ion-avatar item-left>
                 <img src="{{item.avatar == '' ? api + '/images/web/user/default.png' : api + item.avatar}}">
             </ion-avatar>

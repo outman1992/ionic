@@ -20,6 +20,7 @@ export class MessageDetailPage {
 	msglist: any = [];
 	header: any;
 	api: String = AppConfig.getProdUrl();
+	page: any = 0;
 
 	constructor(
 		public navCtrl: NavController,
@@ -30,7 +31,6 @@ export class MessageDetailPage {
 	) {
 		this.message = ''
 		this.to = this.params.get('uid')
-
 	}
 
 	ionViewWillEnter() {
@@ -72,41 +72,7 @@ export class MessageDetailPage {
 		})
 
 		//获取所有聊天记录
-		this.http.post(this.api + '/app/get_chat_list', JSON.stringify({ myid: this.from.uid, hisid: this.params.get('uid') }), options).subscribe((data) => {
-			let Data = data.json();
-			console.log(Data)
-			if (!Data.success) {
-				var toastOpt = {
-					message: Data.msg,
-					duration: 3000,
-					position: 'middle',
-					dismissOnPageChange: true,
-					cssClass: 'mytoast'
-				}
-				let toast = this.toastCtrl.create(toastOpt);
-				toast.present();
-			} else {
-				var that = this;
-				Data.result.forEach(function (v) {
-					var header_path = '',
-						msg_type = '';
-					if (v.fromid == that.from.uid) {
-						msg_type = 'go';
-						header_path = that.api + (that.from.avatar == "" ? "/images/web/user/default.png" : that.from.avatar);
-					} else {
-						// debugger
-						msg_type = 'come';
-						header_path = that.header;
-					}
-					that.msglist.push({
-						content: v.content,
-						type: msg_type,
-						header: header_path
-					})
-				})
-
-			}
-		})
+		this.getChatlogs();
 	}
 
 	ionViewDidEnter() {
@@ -132,6 +98,63 @@ export class MessageDetailPage {
 			type: 'chatMessage'
 		});
 
-		this.content.scrollToBottom()
+		let that = this;
+		// debugger
+		setTimeout(function () {
+			that.content.scrollToBottom();
+			that.message = '';
+		}, 300);
+
+	}
+
+	doRefresh(refresher) {
+		this.getChatlogs();
+		refresher.complete();
+	}
+
+	getChatlogs() {
+		let headers = new Headers({ 'Content-Type': 'application/json' }); //其实不表明 json 也可以, ng 默认好像是 json
+		let options = new RequestOptions({ headers: headers });
+		//获取所有聊天记录
+		let chatlogsdata = {
+			myid: this.from.uid,
+			hisid: this.params.get('uid'),
+			page: this.page
+		}
+		this.http.post(this.api + '/app/get_chat_list', JSON.stringify(chatlogsdata), options).subscribe((data) => {
+			let Data = data.json();
+			// console.log(Data)
+			if (!Data.success) {
+				var toastOpt = {
+					message: Data.msg,
+					duration: 3000,
+					position: 'middle',
+					dismissOnPageChange: true,
+					cssClass: 'mytoast'
+				}
+				let toast = this.toastCtrl.create(toastOpt);
+				toast.present();
+			} else {
+				var that = this;
+				Data.result.forEach(function (v) {
+					var header_path = '',
+						msg_type = '';
+					if (v.fromid == that.from.uid) {
+						msg_type = 'go';
+						header_path = that.api + (that.from.avatar == "" ? "/images/web/user/default.png" : that.from.avatar);
+					} else {
+						// debugger
+						msg_type = 'come';
+						header_path = that.header;
+					}
+					that.msglist.unshift({
+						content: v.content,
+						type: msg_type,
+						header: header_path
+					});
+				})
+				that.page++
+			}
+		})
 	}
 }
