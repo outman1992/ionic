@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar color="tgreen">
+        <ion-buttons left>
+            <button ion-button (click)="goback()">
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>{{cateName}}分类</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content #categoryPage>
+    <ion-grid *ngIf="isShowList">
+        <ion-row *ngFor="let item of goods">
+            <ion-col width-50 *ngFor="let good of item">
+                <ion-card (click)="pushDetail(good.gid)">
+                    <ion-card-content>
+                        <img src="{{api + good.good_images}}">
+                        <ion-item>
+                            <p>{{good.good_name}}</p>
+                            <span>￥{{good.good_price}}</span>
+                        </ion-item>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)" enabled="{{!dataOver}}">
+            <ion-infinite-scroll-content loadingText="拼命加载中..."></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+        <div *ngIf="dataOver" class="bottom-line">~ 我是有底线的 ~</div>
+    </ion-grid>
+    <div class="showNoData" *ngIf="!isShowList">
+        {{cateName}}分类，暂无二货
+    </div>
+</ion-content>

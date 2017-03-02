@@ -1,0 +1,51 @@
+page-category ion-card.card {
+    margin: 0;
+    width: calc(100%);
+}
+
+page-category .card-content {
+    padding: 0;
+}
+
+page-category .card-content img {
+    width: 100%;
+    height: 49vw;
+}
+
+page-category .card .item {
+    padding-left: 8px;
+}
+
+page-category .card .item .label {
+    margin: 0 0 5px 0;
+}
+
+page-category .card .item .label span {
+    color: #f00;
+}
+
+page-category ion-col[width-50] {
+    max-width: calc(50% - 2.5px);
+    padding-right: 0;
+}
+
+page-category .scroll-zoom-wrapper,
+page-category .good-images-scroll,
+page-category ion-grid,
+page-category ion-row {
+    height: initial;
+}
+
+.showNoData {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #11cd6e
+}

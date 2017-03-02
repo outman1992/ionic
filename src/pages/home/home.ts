@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { App, ViewController, NavController, ModalController } from 'ionic-angular';
+import { App, ViewController, NavController, ModalController, Content } from 'ionic-angular';
 import { DetailPage } from './detail';
+import { CategoryPage } from './category';
 import { SearchPage } from '../search/search';
 import { AppConfig } from '../../app/app.config';
 
@@ -11,6 +12,7 @@ import { AppConfig } from '../../app/app.config';
 	templateUrl: 'home.html'
 })
 export class HomePage {
+	@ViewChild(Content) content: Content
 
 	focus: any;
 	category: any;
@@ -20,6 +22,7 @@ export class HomePage {
 	count: any;
 	dataOver: any;
 	api: String = AppConfig.getProdUrl();
+	goTopShow: any = false;
 
 	constructor(
 		public navCtrl: NavController,
@@ -37,16 +40,16 @@ export class HomePage {
 
 		this.category = {
 			cateLineOne: [
-				{ icon: 'phone-portrait', cateName: '手机' },
-				{ icon: 'laptop', cateName: '电脑' },
-				{ icon: 'headset', cateName: '配件' },
-				{ icon: 'bulb', cateName: '电器' },
+				{ icon: 'phone-portrait', cateName: '手机', cid: 1 },
+				{ icon: 'laptop', cateName: '电脑', cid: 2 },
+				{ icon: 'headset', cateName: '配件', cid: 4 },
+				{ icon: 'bulb', cateName: '电器', cid: 5 },
 			],
 			cateLineTwo: [
-				{ icon: 'book', cateName: '书籍' },
-				{ icon: 'game-controller-a', cateName: '娱乐' },
-				{ icon: 'football', cateName: '运动' },
-				{ icon: 'bicycle', cateName: '代步' },
+				{ icon: 'book', cateName: '书籍', cid: 6 },
+				{ icon: 'game-controller-a', cateName: '娱乐', cid: 7 },
+				{ icon: 'football', cateName: '运动', cid: 8 },
+				{ icon: 'bicycle', cateName: '代步', cid: 9 },
 			]
 		};
 		this.current = 'new';    //new: 最新，recommend: 推荐
@@ -73,8 +76,8 @@ export class HomePage {
 		})
 	}
 
-	pushCateList(cateName) {
-		// console.log(cateName)
+	pushCateList(cid, cateName) {
+		this.appCtrl.getRootNav().push(CategoryPage, { cid: cid, cateName: cateName });
 	}
 
 	pushDetail(id) {
@@ -143,5 +146,13 @@ export class HomePage {
 	openSearchModal() {
 		let searchModal = this.modalCtrl.create(SearchPage);
 		searchModal.present();
+	}
+
+	//去顶部相关
+	scrolling() {
+		this.goTopShow = this.content.getContentDimensions().scrollTop > 200;
+	}
+	goToTop() {
+		this.content.scrollToTop();
 	}
 }

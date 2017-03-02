@@ -29,8 +29,6 @@ export class DetailPage {
 	) {
 		this.id = this.params.get('id');
 
-
-
 		this.http.get(this.api + '/app/goods_detail?gid=' + this.id).subscribe(data => {
 			var res = data.json()
 			if (res.success) {
@@ -74,7 +72,20 @@ export class DetailPage {
 	}
 
 	goMsgDetailPage() {
-		this.appCtrl.getRootNav().push(MessageDetailPage, { uid: this.detail['uid'] });
+		var myUid = JSON.parse(localStorage.getItem('user')).uid;
+		if (myUid == this.detail['uid']) {
+			var toastOpt = {
+				message: "不能购买自己发布的二货！",
+				duration: 3000,
+				position: 'middle',
+				dismissOnPageChange: true,
+				cssClass: 'mytoast'
+			}
+			let toast = this.toastCtrl.create(toastOpt);
+			toast.present();
+		} else {
+			this.appCtrl.getRootNav().push(MessageDetailPage, { uid: this.detail['uid'] });
+		}
 	}
 
 

@@ -13,6 +13,7 @@ import { RegisterPage } from '../pages/usercenter/register';
 import { SettingPage } from '../pages/usercenter/setting';
 import { HomePage } from '../pages/home/home';
 import { DetailPage } from '../pages/home/detail';
+import { CategoryPage } from '../pages/home/category';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SearchPage } from '../pages/search/search';
 
@@ -32,7 +33,8 @@ import { SearchPage } from '../pages/search/search';
 		SellMthodPage,
 		PublishCategoryPage,
 		SettingPage,
-		MessageDetailPage
+		MessageDetailPage,
+		CategoryPage
 	],
 	imports: [
 		IonicModule.forRoot(MyApp)
@@ -53,7 +55,8 @@ import { SearchPage } from '../pages/search/search';
 		SellMthodPage,
 		PublishCategoryPage,
 		SettingPage,
-		MessageDetailPage
+		MessageDetailPage,
+		CategoryPage
 	],
 	providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
 })

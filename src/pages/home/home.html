@@ -13,7 +13,7 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content #Content (ionScroll)="scrolling()">
     <ion-slides autoplay="2000" pager="true" loop="true">
         <ion-slide *ngFor="let item of focus">
             <img src="{{api + item.image}}">
@@ -22,13 +22,13 @@
     <div class="category">
         <ion-grid>
             <ion-row>
-                <ion-col class="cate-item" width-25 *ngFor="let cate of category.cateLineOne" (click)="pushCateList(cate.cateName)">
+                <ion-col class="cate-item" width-25 *ngFor="let cate of category.cateLineOne" (click)="pushCateList(cate.cid, cate.cateName)">
                     <ion-icon name="{{cate.icon}}"></ion-icon>
                     <p class="cate-name">{{cate.cateName}}</p>
                 </ion-col>
             </ion-row>
             <ion-row>
-                <ion-col class="cate-item" width-25 *ngFor="let cate of category.cateLineTwo" (click)="pushCateList(cate.cateName)">
+                <ion-col class="cate-item" width-25 *ngFor="let cate of category.cateLineTwo" (click)="pushCateList(cate.cid, cate.cateName)">
                     <ion-icon name="{{cate.icon}}"></ion-icon>
                     <p class="cate-name">{{cate.cateName}}</p>
                 </ion-col>
@@ -79,4 +79,7 @@
         </ion-infinite-scroll>
         <div *ngIf="dataOver" class="bottom-line">~ 我是有底线的 ~</div>
     </div>
+    <ion-fab *ngIf="goTopShow" bottom right edge (click)="goToTop()">
+        <button ion-fab mini color="tgreen"><ion-icon name="arrow-round-up"></ion-icon></button>
+    </ion-fab>
 </ion-content>
