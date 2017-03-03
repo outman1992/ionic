@@ -20,21 +20,23 @@
     </div>
     <div class="user">
         <ion-list>
-            <button ion-item (click)="popSetting()">
+            <button ion-item (click)="popPage(1)">
                 <ion-icon name="filing" item-left></ion-icon>
                 <h3>我发布的</h3>
             </button>
-            <button ion-item (click)="popSetting()">
-                <ion-icon name="log-out" item-left></ion-icon>
-                <h3>我卖掉的</h3>
-            </button>
-            <button ion-item (click)="popSetting()">
-                <ion-icon name="cart" item-left></ion-icon>
-                <h3>我购买的</h3>
-            </button>
-            <button ion-item (click)="popSetting()">
+            <button ion-item (click)="popPage(2)">
                 <ion-icon name="heart" item-left></ion-icon>
                 <h3>我想要的</h3>
+            </button>
+        </ion-list>
+        <ion-list>
+            <button ion-item (click)="popPage(4)">
+                <ion-icon name="chatboxes" item-left></ion-icon>
+                <h3>我的留言</h3>
+            </button>
+            <button ion-item (click)="popPage(3)">
+                <ion-icon name="person" item-left></ion-icon>
+                <h3>个人资料</h3>
             </button>
         </ion-list>
         <ion-list>

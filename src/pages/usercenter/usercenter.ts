@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { App, NavController, ModalController, ToastController } from 'ionic-angular';
 
 import { LoginPage } from '../usercenter/login';
 import { SettingPage } from '../usercenter/setting';
-import { NavController, ModalController, ToastController } from 'ionic-angular';
+import { PublishedPage } from '../usercenter/my/published';
 
 import { AppConfig } from '../../app/app.config';
 
@@ -19,7 +20,8 @@ export class UsercenterPage {
 	constructor(
 		public navCtrl: NavController,
 		public modalCtrl: ModalController,
-		public toastCtrl: ToastController
+		public toastCtrl: ToastController,
+		public appCtrl: App
 	) {
 		// debugger
 		this.user = JSON.parse(localStorage.getItem('user'))
@@ -68,6 +70,14 @@ export class UsercenterPage {
 			return false;
 		} else {
 			return true;
+		}
+	}
+
+	popPage(index) {
+		switch (index) {
+			case 1:
+				this.appCtrl.getRootNav().push(PublishedPage)
+				break;
 		}
 	}
 

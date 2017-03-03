@@ -17,6 +17,8 @@ import { CategoryPage } from '../pages/home/category';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SearchPage } from '../pages/search/search';
 
+import { PublishedPage } from '../pages/usercenter/my/published';
+
 @NgModule({
 	declarations: [
 		MyApp,
@@ -34,7 +36,8 @@ import { SearchPage } from '../pages/search/search';
 		PublishCategoryPage,
 		SettingPage,
 		MessageDetailPage,
-		CategoryPage
+		CategoryPage,
+		PublishedPage
 	],
 	imports: [
 		IonicModule.forRoot(MyApp)
@@ -56,7 +59,8 @@ import { SearchPage } from '../pages/search/search';
 		PublishCategoryPage,
 		SettingPage,
 		MessageDetailPage,
-		CategoryPage
+		CategoryPage,
+		PublishedPage
 	],
 	providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
 })

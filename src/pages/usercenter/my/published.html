@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar color="tgreen">
+        <ion-buttons left>
+            <button ion-button (click)="goback()">
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>我发布的</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card class="good-item">
+        <ion-item class="good-info">
+            <img item-left src="{{api + '/images/web/user/default.png'}}" alt="">
+            <h2>技能服务 私人定制，网站服务</h2>
+            <p>￥999</p>
+            <div>
+                <span>喜欢10</span>
+                <span>浏览20</span>
+            </div>
+        </ion-item>
+        <ion-item class="buttons-box">
+            <button ion-button outline color="tgreen">编辑</button>
+            <button ion-button outline color="tgreen">删除</button>
+        </ion-item>
+    </ion-card>
+</ion-content>

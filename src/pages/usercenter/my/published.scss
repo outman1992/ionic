@@ -1,0 +1,43 @@
+.good-item {
+    margin: 0;
+    width: calc(100%);
+    margin-top: 10px;
+}
+
+.good-item img {
+    height: 80px;
+    border: #ccc solid 1px;
+}
+
+.good-item .item {
+    padding-left: 13px;
+}
+
+.good-item .label {
+    margin: 0;
+}
+
+.good-item .label h2 {
+    font-size: 1.4rem;
+    color: #000;
+}
+
+.good-item .label p {
+    color: #f00;
+    font-size: 1.8rem;
+    margin: 10px 0;
+}
+
+.good-item .label div span {
+    color: #ccc;
+    font-size: 1.3rem;
+}
+
+.buttons-box {
+    text-align: right;
+    border-top: #ddd solid 1px;
+}
+
+.good-info {
+    padding: 5px 0 5px 13px;
+}
