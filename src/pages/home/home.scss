@@ -114,6 +114,7 @@ ion-card img {
 
 .item .good-info {
     margin-top: 0;
+    margin-bottom: 0;
 }
 
 .item .good-info ion-icon:before {
@@ -158,4 +159,9 @@ ion-avatar img {
 
 ion-fab[bottom][edge] {
     bottom: 0;
+}
+
+.good-info .iconfont {
+    margin-right: 0;
+    color: #11cd6e;
 }

@@ -74,7 +74,7 @@ export class LoginPage {
 					localStorage.setItem('user', JSON.stringify(Data.result));
 
 					//登录socket
-					debugger
+					// debugger
 					if (localStorage.getItem('token')) { AppConfig.connect(); }
 
 					setTimeout(() => {

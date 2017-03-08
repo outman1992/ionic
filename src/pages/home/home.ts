@@ -152,7 +152,17 @@ export class HomePage {
 	scrolling() {
 		this.goTopShow = this.content.getContentDimensions().scrollTop > 200;
 	}
+
 	goToTop() {
+		this.goTopShow = false;
 		this.content.scrollToTop();
 	}
+
+	doRefresh(refresher) {
+		this.page = 1;
+		this.loadGoodList()
+		refresher.complete();
+	}
+
+
 }

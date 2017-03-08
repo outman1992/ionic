@@ -1,11 +1,11 @@
 <ion-header>
     <ion-toolbar color="tgreen">
-        <ion-buttons left>
+        <!--<ion-buttons left>
             <button ion-button (click)="goback()">
                 <ion-icon name="arrow-back"></ion-icon>
             </button>
-        </ion-buttons>
-        <ion-title>二货详情</ion-title>
+        </ion-buttons>-->
+        <ion-title>{{detail ? detail.good_name : '二货详情'}}</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -28,18 +28,24 @@
     </div>
 </ion-content>
 <ion-footer>
-    <ion-toolbar>
-        <ion-buttons (click)="goback()" left>
-            <div>
-                <ion-icon name="chatboxes"></ion-icon>
-            </div>
-            <div>留言</div>
+    <ion-toolbar class="detail-footer">
+        <ion-buttons left class="goback">
+            <button ion-button (click)="goback()">
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
         </ion-buttons>
         <ion-buttons (click)="goback()" left>
             <div>
-                <ion-icon name="heart"></ion-icon>
+                <i class="iconfont" item-left>&#xe763;</i>
             </div>
-            <div>想要</div>
+            <!--<div>留言</div>-->
+        </ion-buttons>
+        <ion-buttons (click)="want()" left>
+            <div>
+                <i *ngIf="wanted" class="iconfont" item-left>&#xe760;</i>
+                <i *ngIf="!wanted" class="iconfont" item-left>&#xe761;</i>
+            </div>
+            <!--<div>想要</div>-->
         </ion-buttons>
         <ion-buttons class="buy-btn" (click)="chat()" right>
             <div>买买买</div>

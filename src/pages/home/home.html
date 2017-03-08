@@ -14,6 +14,10 @@
     </ion-toolbar>
 </ion-header>
 <ion-content #Content (ionScroll)="scrolling()">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content refreshingSpinner="circles" refreshingText="拼命加载中...">
+        </ion-refresher-content>
+    </ion-refresher>
     <ion-slides autoplay="2000" pager="true" loop="true">
         <ion-slide *ngFor="let item of focus">
             <img src="{{api + item.image}}">
@@ -62,16 +66,18 @@
             <ion-item class="good-info-bar">
                 <div class="price" item-left>￥{{item.good_price}}</div>
                 <div class="views" item-right class="good-info">
-                    <ion-icon name="eye" item-left></ion-icon>
+                    <!--<ion-icon name="eye" item-left></ion-icon>-->
+                    <i class="iconfont" item-left>&#xe73d;</i>
                     <span>{{item.views}}次浏览</span>
                 </div>
                 <div class="want" item-right class="good-info">
-                    <ion-icon name="heart" item-left></ion-icon>
+                    <!--<ion-icon name="heart" item-left></ion-icon>-->
+                    <i class="iconfont" item-left>&#xe761;</i>
                     <span>{{item.wants}}人想要</span>
                 </div>
             </ion-item>
             <ion-card-content>
-                <p>{{item.description}}</p>
+                <p>{{item.good_name}}</p>
             </ion-card-content>
         </ion-card>
         <ion-infinite-scroll (ionInfinite)="doInfinite($event)" enabled="{{!dataOver}}">

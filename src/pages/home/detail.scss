@@ -1,44 +1,68 @@
-.ios,
-.md {
-    .item-block .item-inner {
-        border: none;
-    }
-    .detail-header {
-        border-bottom: 1px solid #dedede;
-    }
-    .detail-des {
-        background: #fff;
-    }
-    .detail-des p {
-        margin: 0;
-    }
-    .detail-images[padding] {
-        background: #fff;
-        padding-top: 0;
-    }
-    .detail-images img {
-        width: 100%;
-    }
-    .goods-title {
-        font-size: 2.4rem;
-    }
-    ion-footer {}
-    ion-footer ion-buttons {
-        background: none;
-        margin-left: 20px;
-    }
-    ion-footer ion-buttons ion-icon:before {
-        color: #11cd6e
-    }
-    ion-toolbar {
-        padding: 0;
-    }
-    .buy-btn {
-        min-height: 56px;
-        line-height: 56px;
-        background: red;
-        color: #fff;
-        padding: 0 20px;
-        margin-right: 0;
-    }
+.item-block .item-inner {
+    border: none;
+}
+
+.detail-header {
+    border-bottom: 1px solid #dedede;
+}
+
+.detail-des {
+    background: #fff;
+}
+
+.detail-des p {
+    margin: 0;
+}
+
+.detail-images[padding] {
+    background: #fff;
+    padding-top: 0;
+}
+
+.detail-images img {
+    width: 100%;
+}
+
+.goods-title {
+    font-size: 2.4rem;
+}
+
+.detail-footer ion-buttons {
+    background: none;
+    margin-left: 20px;
+}
+
+.detail-footer ion-buttons ion-icon:before {
+    color: #11cd6e
+}
+
+ion-toolbar.toolbar.detail-footer {
+    padding: 0;
+}
+
+.detail-footer .buy-btn {
+    // min-height: 56px;
+    line-height: 45px;
+    background: red;
+    color: #fff;
+    padding: 0 10px;
+    margin-right: 0;
+}
+
+.detail-footer .goback {
+    margin-left: 5px;
+}
+
+ion-toolbar.toolbar.detail-footer {
+    min-height: initial;
+}
+
+ion-toolbar.toolbar.detail-footer .iconfont {
+    font-size: 22px;
+    color: #11cd6e;
+}
+
+.detail-footer .toolbar-background {
+    background-color: #fff;
+    border-top: #eee solid 1px;
 }

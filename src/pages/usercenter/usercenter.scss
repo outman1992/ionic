@@ -1,11 +1,11 @@
 .user-header {
-    padding: 20px 0;
+    padding: 20px 0 10px;
     background-color: #fff;
-    border-bottom: #e5e5e5 solid 1px;
+    // border-bottom: #e5e5e5 solid 1px;
 }
 
 .content-md .user-header {
-    border-bottom: #e5e5e5 solid 2px;
+    // border-bottom: #e5e5e5 solid 2px;
 }
 
 .header-image {
@@ -49,6 +49,11 @@
     border-bottom: #e5e5e5 solid 1px;
 }
 
+.user button h3 {
+    color: #666;
+    font-weight: bold;
+}
+
 .list-ios>.item-block:first-child,
 .list-ios>.item-block:last-child,
 .list-ios>.item-wrapper:last-child .item-block {
@@ -62,4 +67,17 @@
 .user .list {
     margin-bottom: 0;
     margin-top: 10px;
+    padding: 10px 15px;
+}
+
+.list-ios>.item-block:first-child {
+    border-top: none;
+}
+
+page-usercenter .content {
+    background: #fff;
+}
+
+page-usercenter .iconfont {
+    font-size: 24px;
 }
