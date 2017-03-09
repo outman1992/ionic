@@ -9,14 +9,17 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-card class="good-item">
+    <div class="showNoData" *ngIf="count == 0">
+        您还未发不过二货
+    </div>
+    <ion-card class="good-item" *ngFor="let item of list">
         <ion-item class="good-info">
-            <img item-left src="{{api + '/images/web/user/default.png'}}" alt="">
-            <h2>技能服务 私人定制，网站服务</h2>
-            <p>￥999</p>
+            <img item-left src="{{api + (item.good_images ? item.good_images : '/images/web/user/default.png')}}" alt="">
+            <h2>{{item.good_name}}</h2>
+            <p>￥{{item.good_price}}</p>
             <div>
-                <span>喜欢10</span>
-                <span>浏览20</span>
+                <span>喜欢{{item.wants}}</span>
+                <span>浏览{{item.views}}</span>
             </div>
         </ion-item>
         <ion-item class="buttons-box">
@@ -24,4 +27,8 @@
             <button ion-button outline color="tgreen">删除</button>
         </ion-item>
     </ion-card>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" enabled="{{!dataOver}}">
+        <ion-infinite-scroll-content loadingText="拼命加载中..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <div *ngIf="dataOver" class="bottom-line">~ 我是有底线的 ~</div>
 </ion-content>

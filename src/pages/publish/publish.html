@@ -66,7 +66,7 @@
         <button ion-item (click)="popCategory()">
             <span class="label-name">分类</span>
             <span *ngIf="!category">请选择分类</span>
-            <span *ngIf="category">{{cdata.cname}}</span>
+            <span *ngIf="category">{{cdata ? cdata.cate_name : ''}}</span>
         </button>
     </ion-list>
 </ion-content>

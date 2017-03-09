@@ -102,15 +102,36 @@ export class DetailPage {
 			cssClass: 'mytoast'
 		}
 
+		let headers = new Headers({ 'Content-Type': 'application/json' }); //其实不表明 json 也可以, ng 默认好像是 json
+		let options = new RequestOptions({ headers: headers });
+
 		if (!localStorage.getItem('token') || !localStorage.getItem('user')) {
 			let modal = this.modalCtrl.create(LoginPage);
 
 			modal.present();
 		} else {
 			if (this.wanted) {
-				toastOpt.message = '您已经收藏过了哦~';
-				let toast = this.toastCtrl.create(toastOpt);
-				toast.present();
+				let del_coll_data = {
+					uid: this.user.uid,
+					gid: this.detail['gid'],
+					phone: this.user.phone_number,
+					token: localStorage.getItem('token')
+				}
+				//取消收藏
+				this.http.post(this.api + '/app/collect_delete', JSON.stringify(del_coll_data), options).subscribe((data) => {
+					let Data = data.json();
+
+					if (Data.success) {
+						this.wanted = false;
+						toastOpt.message = Data.msg;
+						let toast = this.toastCtrl.create(toastOpt);
+						toast.present();
+					} else if (Data.result == 'tokenerr') {
+						let modal = this.modalCtrl.create(LoginPage);
+
+						modal.present();
+					}
+				})
 			} else {
 				var myUid = this.user.uid;
 				if (myUid == this.detail['uid']) {
@@ -120,24 +141,42 @@ export class DetailPage {
 					toast.present();
 
 				} else {
-					let headers = new Headers({ 'Content-Type': 'application/json' }); //其实不表明 json 也可以, ng 默认好像是 json
-					let options = new RequestOptions({ headers: headers });
 
-					//获取对方头像及用户名
-					this.http.post(this.api + '/app/collect', JSON.stringify({ uid: this.user.uid, gid: this.detail['gid'] }), options).subscribe((data) => {
+					let coll_data = {
+						uid: this.user.uid,
+						gid: this.detail['gid'],
+						phone: this.user.phone_number,
+						token: localStorage.getItem('token')
+					}
+
+					//收藏
+					this.http.post(this.api + '/app/collect', JSON.stringify(coll_data), options).subscribe((data) => {
 						let Data = data.json();
-
-						toastOpt.message = Data.msg;
-						let toast = this.toastCtrl.create(toastOpt);
-						toast.present();
 
 						if (Data.success) {
 							this.wanted = true
+
+							toastOpt.message = Data.msg;
+							let toast = this.toastCtrl.create(toastOpt);
+							toast.present();
+						} else if (!Data.success && Data.result == 'tokenerr') {
+							let modal = this.modalCtrl.create(LoginPage);
+
+							modal.present();
+						} else {
+							toastOpt.message = Data.msg;
+							let toast = this.toastCtrl.create(toastOpt);
+							toast.present();
 						}
 					})
 				}
 			}
 		}
+
+	}
+
+	//点击评论（留言）
+	doComment() {
 
 	}
 

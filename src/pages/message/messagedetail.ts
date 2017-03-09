@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { Http, Headers, RequestOptions } from '@angular/http';
-import { NavController, ViewController, NavParams, ToastController, Content } from 'ionic-angular';
+import { NavController, ViewController, NavParams, ToastController, Content, ModalController } from 'ionic-angular';
 import { AppConfig } from '../../app/app.config';
+import { LoginPage } from '../usercenter/login';
 
 @Component({
 	selector: 'page-messagedetail',
@@ -27,6 +28,7 @@ export class MessageDetailPage {
 		public params: NavParams,
 		public viewCtrl: ViewController,
 		public http: Http,
+		public modalCtrl: ModalController,
 		private toastCtrl: ToastController,
 	) {
 		this.message = ''
@@ -64,11 +66,22 @@ export class MessageDetailPage {
 		let headers = new Headers({ 'Content-Type': 'application/json' }); //其实不表明 json 也可以, ng 默认好像是 json
 		let options = new RequestOptions({ headers: headers });
 
+		let loginData = {
+			uid: this.params.get('uid'),
+			phone: this.from.phone_number,
+			token: localStorage.getItem('token')
+		}
+
 		//获取对方头像及用户名
-		this.http.post(this.api + '/app/get_user_info', JSON.stringify({ uid: this.params.get('uid') }), options).subscribe((data) => {
+		this.http.post(this.api + '/app/get_user_info', JSON.stringify(loginData), options).subscribe((data) => {
 			let Data = data.json();
-			this.user = Data.result.nick_name;
-			this.header = this.api + (Data.result.avatar == "" ? "/images/web/user/default.png" : Data.result.avatar);
+			if (!Data.success && Data.result == 'tokenerr') { 	//token错误，跳转登录页面
+				let modal = this.modalCtrl.create(LoginPage);
+				modal.present();
+			} else {
+				this.user = Data.result.nick_name;
+				this.header = this.api + (Data.result.avatar == "" ? "/images/web/user/default.png" : Data.result.avatar);
+			}
 		})
 
 		//获取所有聊天记录

@@ -37,17 +37,19 @@ export class MessagePage {
 	ionViewWillEnter() {
 		this.login = localStorage.getItem('token') ? true : false;
 		//登录socket
-		if (localStorage.getItem('token')) { AppConfig.connect(); }
+		if (localStorage.getItem('token')) {
+			AppConfig.connect();
 
-		this.socket = AppConfig.socket;
-		// debugger
-		let that = this;
-		this.socket.on('chatMessage', function (data) {
-			that.getContects();
-		})
+			this.socket = AppConfig.socket;
+			// debugger
+			let that = this;
+			this.socket.on('chatMessage', function (data) {
+				that.getContects();
+			})
 
-		//加载联系人
-		this.getContects();
+			//加载联系人
+			this.getContects();
+		}
 	}
 
 	popLogin() {
@@ -56,25 +58,41 @@ export class MessagePage {
 		modal.onDidDismiss((data) => {
 			// debugger
 			this.login = localStorage.getItem('token') ? true : false;
+			this.user = JSON.parse(localStorage.getItem('user'));
+			this.getContects();
 		})
 		modal.present();
 	}
 
 	getContects() {
+		let loginData = {
+			uid: this.user.uid,
+			phone: this.user.phone_number,
+			token: localStorage.getItem('token')
+		}
+
 		let headers = new Headers({ 'Content-Type': 'application/json' }); //其实不表明 json 也可以, ng 默认好像是 json
 		let options = new RequestOptions({ headers: headers });
-		this.http.post(this.api + '/app/get_chat_person', JSON.stringify({ uid: this.user.uid }), options).subscribe((data) => {
+		this.http.post(this.api + '/app/get_chat_person', JSON.stringify(loginData), options).subscribe((data) => {
 			let Data = data.json();
 			if (!Data.success) {
-				var toastOpt = {
-					message: Data.msg,
-					duration: 3000,
-					position: 'middle',
-					dismissOnPageChange: true,
-					cssClass: 'mytoast'
+				if (!Data.success && Data.result == 'tokenerr') {
+					localStorage.removeItem('token');
+					localStorage.removeItem('user');
+					this.socket.disconnect();
+					this.login = false;
+					this.popLogin();
+				} else {
+					var toastOpt = {
+						message: Data.msg,
+						duration: 3000,
+						position: 'middle',
+						dismissOnPageChange: true,
+						cssClass: 'mytoast'
+					}
+					let toast = this.toastCtrl.create(toastOpt);
+					toast.present();
 				}
-				let toast = this.toastCtrl.create(toastOpt);
-				toast.present();
 			} else {
 				this.contacts = Data.result;
 			}

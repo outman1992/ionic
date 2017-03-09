@@ -40,13 +40,13 @@ export class TabsPage {
 		if (localStorage.getItem('token')) {
 			AppConfig.connect();
 			this.getNotReadMsgCount();
-		}
 
-		let that = this;
-		AppConfig.socket.on('chatMessage', function (data) {
-			console.log('有消息了');
-			that.getNotReadMsgCount();
-		});
+			let that = this;
+			AppConfig.socket.on('chatMessage', function (data) {
+				console.log('有消息了');
+				that.getNotReadMsgCount();
+			});
+		}
 	}
 
 	getNotReadMsgCount() {
@@ -55,7 +55,13 @@ export class TabsPage {
 
 		//获取对方头像及用户名
 		var user = JSON.parse(localStorage.getItem('user'));
-		this.http.post(this.api + '/app/get_notread_num', JSON.stringify({ uid: user.uid }), options).subscribe((data) => {
+		var countData = {
+			uid: user.uid,
+			phone: user.phone_number,
+			token: localStorage.getItem('token')
+		};
+		// debugger
+		this.http.post(this.api + '/app/get_notread_num', JSON.stringify(countData), options).subscribe((data) => {
 			let Data = data.json();
 			if (Data.success) {
 				if (Data.result > 0) {

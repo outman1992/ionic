@@ -11,12 +11,12 @@
 <ion-content>
     <ion-list radio-group [(ngModel)]="category">
 
-        <ion-item>
-            <ion-label>书籍</ion-label>
-            <ion-radio (click)="select($event)" value="1" data='{"cid": "1", "cname": "书籍"}'></ion-radio>
+        <ion-item *ngFor="let item of categoryList">
+            <ion-label>{{item.cate_name}}</ion-label>
+            <ion-radio (click)="select(item.id)" value="{{item.id}}"></ion-radio>
         </ion-item>
 
-        <ion-item>
+        <!--<ion-item>
             <ion-label>电器</ion-label>
             <ion-radio (click)="select($event)" value="2" data='{"cid": "2", "cname": "电器"}'></ion-radio>
         </ion-item>
@@ -24,7 +24,7 @@
         <ion-item>
             <ion-label>代步</ion-label>
             <ion-radio (click)="select($event)" value="3" data='{"cid": "3", "cname": "代步"}'></ion-radio>
-        </ion-item>
+        </ion-item>-->
 
     </ion-list>
 </ion-content>

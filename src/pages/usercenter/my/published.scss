@@ -1,4 +1,4 @@
-.good-item {
+ion-card.good-item {
     margin: 0;
     width: calc(100%);
     margin-top: 10px;
@@ -6,6 +6,7 @@
 
 .good-item img {
     height: 80px;
+    width: 80px;
     border: #ccc solid 1px;
 }
 
