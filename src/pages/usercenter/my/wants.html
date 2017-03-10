@@ -5,26 +5,21 @@
                 <ion-icon name="arrow-back"></ion-icon>
             </button>
         </ion-buttons>
-        <ion-title>我发布的</ion-title>
+        <ion-title>我想要的</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content>
     <div class="showNoData" *ngIf="count == 0">
-        您还未发布过二货
+        您还未收藏过二货
     </div>
     <ion-card class="good-item" *ngFor="let item of list">
         <ion-item class="good-info">
             <img item-left src="{{api + (item.good_images ? item.good_images : '/images/web/user/default.png')}}" alt="">
             <h2>{{item.good_name}}</h2>
             <p>￥{{item.good_price}}</p>
-            <div>
-                <span>喜欢{{item.wants}}</span>
-                <span>浏览{{item.views}}</span>
-            </div>
         </ion-item>
         <ion-item class="buttons-box">
-            <button ion-button outline color="tgreen">编辑</button>
-            <button ion-button outline color="tgreen">删除</button>
+            <button ion-button outline color="tgreen">取消收藏</button>
         </ion-item>
     </ion-card>
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)" enabled="{{!dataOver}}">

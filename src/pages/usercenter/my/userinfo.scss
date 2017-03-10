@@ -1,0 +1,15 @@
+page-userinfo {
+    .item ion-avatar img {
+        width: 60px;
+        height: 60px;
+    }
+    .item {
+        border-bottom: #e5e5e5 solid 1px;
+    }
+    ion-list-header.item {
+        border-top: none;
+        background-color: #eee;
+        margin-top: 20px;
+        margin-bottom: 0px;
+    }
+}

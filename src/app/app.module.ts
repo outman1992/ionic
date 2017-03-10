@@ -18,6 +18,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SearchPage } from '../pages/search/search';
 
 import { PublishedPage } from '../pages/usercenter/my/published';
+import { WantsPage } from '../pages/usercenter/my/wants';
+import { UserinfoPage } from '../pages/usercenter/my/userinfo';
 
 @NgModule({
 	declarations: [
@@ -37,7 +39,9 @@ import { PublishedPage } from '../pages/usercenter/my/published';
 		SettingPage,
 		MessageDetailPage,
 		CategoryPage,
-		PublishedPage
+		PublishedPage,
+		WantsPage,
+		UserinfoPage
 	],
 	imports: [
 		IonicModule.forRoot(MyApp)
@@ -60,7 +64,9 @@ import { PublishedPage } from '../pages/usercenter/my/published';
 		SettingPage,
 		MessageDetailPage,
 		CategoryPage,
-		PublishedPage
+		PublishedPage,
+		WantsPage,
+		UserinfoPage
 	],
 	providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
 })

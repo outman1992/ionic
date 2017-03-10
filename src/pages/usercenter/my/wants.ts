@@ -5,15 +5,15 @@ import { NavController, ViewController, ToastController } from 'ionic-angular';
 import { AppConfig } from '../../../app/app.config';
 
 @Component({
-	selector: 'page-published',
-	templateUrl: 'published.html'
+	selector: 'page-wants',
+	templateUrl: 'wants.html'
 })
-export class PublishedPage {
+export class WantsPage {
 
-	api: any = AppConfig.getProdUrl();
 	page: any = 1;
-	list: any = [];
+	api: any = AppConfig.getProdUrl();
 	count: any;
+	list: any = [];
 	dataOver: any = false;
 
 	constructor(
@@ -26,19 +26,21 @@ export class PublishedPage {
 	}
 
 	ionViewWillEnter() {
-		this.loadMyProList(null);
+		this.loadMyWants(null);
 	}
+
 
 	doInfinite(infiniteScroll) {
 		if (this.page <= this.count) {
-			this.loadMyProList(infiniteScroll);
+			this.loadMyWants(infiniteScroll);
 		} else {
 			this.dataOver = true;
 			infiniteScroll.enable(false);
 		}
 	}
 
-	loadMyProList(infiniteScroll) {
+	loadMyWants(infiniteScroll) {
+
 		let headers = new Headers({ 'Content-Type': 'application/json' }); //其实不表明 json 也可以, ng 默认好像是 json
 		let options = new RequestOptions({ headers: headers });
 
@@ -48,19 +50,19 @@ export class PublishedPage {
 			uid: JSON.parse(localStorage.getItem('user')).uid,
 			page: this.page
 		};
-
-		this.http.post(this.api + '/app/my_published_list', JSON.stringify(userInfo), options).subscribe((data) => {
+		this.http.post(this.api + '/app/collect_list', JSON.stringify(userInfo), options).subscribe((data) => {
 			let Data = data.json();
 			if (Data.success) {
 				let that = this;
 				this.count = Data.result.count;
 				if (Data.result.count > 0) {
-					Data.result.result.forEach(function (v) {
+					Data.result.data.forEach(function (v) {
 						v.good_images = JSON.parse(v.good_images)[0];
 						that.list.push(v);
 					})
 					this.page++
 				}
+
 				if (infiniteScroll) {
 					infiniteScroll.complete();
 				}

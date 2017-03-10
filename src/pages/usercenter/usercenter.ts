@@ -4,6 +4,8 @@ import { App, NavController, ModalController, ToastController } from 'ionic-angu
 import { LoginPage } from '../usercenter/login';
 import { SettingPage } from '../usercenter/setting';
 import { PublishedPage } from '../usercenter/my/published';
+import { WantsPage } from '../usercenter/my/wants';
+import { UserinfoPage } from '../usercenter/my/userinfo';
 
 import { AppConfig } from '../../app/app.config';
 
@@ -74,9 +76,16 @@ export class UsercenterPage {
 	}
 
 	popPage(index) {
+		if (!this.checkUserLogin()) { return false };
 		switch (index) {
 			case 1:
-				this.appCtrl.getRootNav().push(PublishedPage)
+				this.appCtrl.getRootNav().push(PublishedPage);
+				break;
+			case 2:
+				this.appCtrl.getRootNav().push(WantsPage);
+				break;
+			case 4:
+				this.appCtrl.getRootNav().push(UserinfoPage);
 				break;
 		}
 	}

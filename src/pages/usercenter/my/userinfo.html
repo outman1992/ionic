@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar color="tgreen">
+        <ion-buttons left>
+            <button ion-button (click)="goback()">
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>个人资料</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+        <button ion-item>
+			<h3 item-left>头像：</h3>
+			<ion-avatar item-right>
+				<img src="{{api + '/images/web/user/default.png'}}">
+			</ion-avatar>
+		</button>
+        <button ion-item>
+			<h3 item-left>昵称：</h3>
+			<span item-right>小万万</span>
+		</button>
+        <button ion-item>
+			<h3 item-left>性别：</h3>
+			<span item-right>男</span>
+		</button>
+
+        <ion-list-header>
+            认证
+        </ion-list-header>
+        <button ion-item>
+			<h3 item-left>实名：</h3>
+			<span item-right>万*强</span>
+		</button>
+        <button ion-item>
+			<h3 item-left>手机：</h3>
+			<span item-right>150****8857</span>
+		</button>
+        <button ion-item>
+			<h3 item-left>邮箱：</h3>
+			<span item-right>584845663@qq.com</span>
+		</button>
+    </ion-list>
+
+</ion-content>
