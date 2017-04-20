@@ -4,7 +4,7 @@ export class AppConfig {
 
 	//生产环境URL
 	public static getProdUrl() {
-		return "http://127.0.0.1:3000";
+		return "http://new.taoertao.com";
 	}
 
 	public static socket = null;
@@ -12,7 +12,7 @@ export class AppConfig {
 	public static connect() {
 		// debugger
 		if (!this.socket) {
-			this.socket = io('http://127.0.0.1:3000');
+			this.socket = io('http://new.taoertao.com');
 			let user = JSON.parse(localStorage.getItem('user'))
 			this.socket.emit('message', {
 				content: {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+// import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http } from '@angular/http';
 import { NavController, ViewController, ToastController } from 'ionic-angular';
 
 import { AppConfig } from '../../../app/app.config';

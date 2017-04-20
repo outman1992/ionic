@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
-import { Http, Headers, RequestOptions } from '@angular/http';
-import { NavController, ViewController, ToastController, LoadingController } from 'ionic-angular';
-import { Md5 } from 'ts-md5/dist/md5';
+//import { Http, Headers, RequestOptions } from '@angular/http';
+//import { NavController, ViewController, ToastController, LoadingController } from 'ionic-angular';
+import { ViewController } from 'ionic-angular';
+//import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
 	selector: 'page-register',
